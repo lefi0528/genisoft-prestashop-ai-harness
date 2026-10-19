@@ -140,6 +140,15 @@ class PsHookGuard
             }
         }
 
+        // Explicit check for WordPress hook names
+        if (in_array(strtolower($hookName), ['wp_head', 'wp_footer', 'init', 'admin_init', 'save_post'])) {
+            return [
+                'severity' => 'CRITICAL',
+                'category' => 'WP_HALLUCINATION',
+                'message' => "WordPress hook '{$hookName}' registered in PrestaShop module code."
+            ];
+        }
+
         // Find closest hook using Levenshtein distance
         $closest = null;
         $shortest = 4;

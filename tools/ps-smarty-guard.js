@@ -36,7 +36,7 @@ class PsSmartyGuard {
     }
 
     // 2. Check for deprecated {php}...{/php} blocks
-    const phpTagMatches = content.matchAll(/\{php\}[\s\S]*?\{\/php\}/g);
+    const phpTagMatches = content.matchAll(/\{\/?php\}/g);
     for (const match of phpTagMatches) {
       issues.push({
         severity: 'CRITICAL',

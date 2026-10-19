@@ -22,7 +22,8 @@
         }
     },
     "scripts": {
-        "harness:audit": "bash tools/audit-harness.sh"
+        "test": "@php tools/harness-auditor.php",
+        "harness:audit": "@php tools/harness-auditor.php"
     },
     "config": {
         "sort-packages": true,

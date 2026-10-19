@@ -7,7 +7,8 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "test:smarty": "node tools/ps-smarty-guard.js examples/genisoft_cartthreshold/views/templates/hook/"
+    "test:smarty": "node tools/ps-smarty-guard.js examples/genisoft_cartthreshold/views/templates/hook/",
+    "test": "node tools/ps-smarty-guard.js examples/genisoft_cartthreshold/views/templates/hook/"
   },
   "keywords": [
     "prestashop",

@@ -37,6 +37,9 @@ jobs:
       - name: Validate Composer Configuration
         run: composer validate --strict
 
+      - name: Generate Composer Autoload
+        run: composer dump-autoload --optimize
+
       - name: Lint PHP Syntax
         run: |
           find tools -name "*.php" -exec php -l {} \;
