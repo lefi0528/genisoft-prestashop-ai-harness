@@ -1,0 +1,59 @@
+name: PrestaShop Harness CI & Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test Matrix (Node ${{ matrix.node-version }}, PHP ${{ matrix.php-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+        php-version: ['8.1', '8.2', '8.3']
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, json, tokenizer
+
+      - name: Validate Composer Configuration
+        run: composer validate --strict
+
+      - name: Lint PHP Syntax
+        run: |
+          find tools -name "*.php" -exec php -l {} \;
+          find examples -name "*.php" -exec php -l {} \;
+          find projects/*/solution -name "*.php" -exec php -l {} \;
+
+      - name: Test PrestaShop Hook Guard
+        run: php tools/ps-hook-guard.php examples/genisoft_cartthreshold/genisoft_cartthreshold.php
+
+      - name: Test SQL AppSec Guard
+        run: php tools/ps-sql-guard.php examples/genisoft_cartthreshold/genisoft_cartthreshold.php
+
+      - name: Test Smarty Security Guard
+        run: node tools/ps-smarty-guard.js examples/genisoft_cartthreshold/views/templates/hook/cart_threshold_bar.tpl
+
+      - name: Test Multi-Shop Context Guard
+        run: php tools/ps-context-guard.php examples/genisoft_cartthreshold/genisoft_cartthreshold.php
+
+      - name: Run 100-Point Live Harness Audit
+        run: bash tools/audit-harness.sh

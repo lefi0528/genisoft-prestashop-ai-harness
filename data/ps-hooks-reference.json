@@ -1,0 +1,6037 @@
+{
+  "actionAddressGridDataModifier": {
+    "type": "action",
+    "title": "Modify address grid data",
+    "description": "This hook allows to modify address grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAddressGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify address grid definition",
+    "description": "This hook allows to alter address grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAddressGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify address grid filters",
+    "description": "This hook allows to modify filters for address grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAddressGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify address grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for address grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAddressGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify address grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for address grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminAdministrationControllerPostProcessBefore": {
+    "type": "action",
+    "title": "On post-process in Admin Configure Advanced Parameters Administration Controller",
+    "description": "This hook is called on Admin Configure Advanced Parameters Administration post-process before processing any form",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminAdminShopParametersMetaControllerPostProcessBefore": {
+    "type": "action",
+    "title": "On post-process in Admin Configure Shop Parameters Meta Controller",
+    "description": "This hook is called on Admin Configure Shop Parameters Meta post-process before processing any form",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminAdminWebserviceControllerPostProcessBefore": {
+    "type": "action",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminAdvancedParametersPerformanceControllerPostProcessBefore": {
+    "type": "action",
+    "title": "On post-process in Admin Configure Advanced Parameters Performance Controller",
+    "description": "This hook is called on Admin Configure Advanced Parameters Performance post-process before processing any form",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminBreadcrumbModifier": {
+    "type": "action",
+    "title": "Modify back office breadcrumb",
+    "description": "This hook allows modifying back office breadcrumb",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminControllerInitAfter": {
+    "type": "action",
+    "title": "Perform actions after admin controller initialization",
+    "description": "This hook is launched after the initialization of all admin controllers",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminControllerInitBefore": {
+    "type": "action",
+    "title": "Perform actions before admin controller initialization",
+    "description": "This hook is launched before the initialization of all admin controllers",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminControllerSetMedia": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminDuplicateAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminDuplicateBefore": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminDuplicateDiscountAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminDuplicateDiscountBefore": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminInternationalGeolocationControllerPostProcessBefore": {
+    "type": "action",
+    "title": "On post-process in Admin Improve International Geolocation Controller",
+    "description": "This hook is called on Admin Improve International Geolocation post-process before processing any form",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminInternationalLocalizationControllerPostProcessBefore": {
+    "type": "action",
+    "title": "On post-process in Admin Improve International Localization Controller",
+    "description": "This hook is called on Admin Improve International Localization post-process before processing any form",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminLoginControllerSetMedia": {
+    "type": "action",
+    "title": "Set media on admin login page header",
+    "description": "This hook is called after adding media to admin login page header",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminLogsControllerPostProcessBefore": {
+    "type": "action",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminMaintenanceControllerPostProcessBefore": {
+    "type": "action",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminMenuTabsModifier": {
+    "type": "action",
+    "title": "Modify back office menu",
+    "description": "This hook allows modifying back office menu tabs",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminMetaAfterWriteRobotsFile": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminMetaBeforeWriteRobotsFile": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminMetaSave": {
+    "type": "action",
+    "title": "After saving the configuration in AdminMeta",
+    "description": "This hook is displayed after saving the configuration in AdminMeta",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminOrdersTrackingNumberUpdate": {
+    "type": "action",
+    "title": "After setting the tracking number for the order",
+    "description": "This hook allows you to execute code after the unique tracking number for the order was added",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminPreferencesControllerPostProcessBefore": {
+    "type": "action",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminProductsListingFieldsModifier": {
+    "type": "action",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminProductsListingResultsModifier": {
+    "type": "action",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminSecurityControllerPostProcessBefore": {
+    "type": "action",
+    "title": "On post-process in Admin Security Controller",
+    "description": "This hook is called on Admin Security Controller post-process before processing any form",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminShippingPreferencesControllerPostProcessBefore": {
+    "type": "action",
+    "title": "On post-process in Admin Improve Shipping Preferences Controller",
+    "description": "This hook is called on Admin Improve Shipping Preferences post-process before processing any form",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminShippingPreferencesControllerPostProcessCarrierOptionsBefore": {
+    "type": "action",
+    "title": "On post-process in Admin Improve Shipping Preferences Controller",
+    "description": "This hook is called on Admin Improve Shipping Preferences post-process before processing the Carrier Options form",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminShippingPreferencesControllerPostProcessHandlingBefore": {
+    "type": "action",
+    "title": "On post-process in Admin Improve Shipping Preferences Controller",
+    "description": "This hook is called on Admin Improve Shipping Preferences post-process before processing the Handling form",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminShopParametersOrderPreferencesControllerPostProcessBefore": {
+    "type": "action",
+    "title": "On post-process in Admin Configure Shop Parameters Order Preferences Controller",
+    "description": "This hook is called on Admin Configure Shop Parameters Order Preferences post-process before processing any form",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminShopParametersProductPreferencesControllerPostProcessBefore": {
+    "type": "action",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminThemesControllerUpdate_optionsAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAdminThemesControllerUpdateoptionsAfter": {
+    "type": "action",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAfterLoadRoutes": {
+    "type": "action",
+    "title": "Triggers after loading routes",
+    "description": "Allow modules to modify routes in any way or add their own multilanguage routes.",
+    "locations": [
+      "front office",
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionApplyCartRule": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionAttachmentGridDataModifier": {
+    "type": "action",
+    "title": "Modify attachment grid data",
+    "description": "This hook allows to modify attachment grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAttachmentGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify attachment grid definition",
+    "description": "This hook allows to alter attachment grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAttachmentGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify attachment grid filters",
+    "description": "This hook allows to modify filters for attachment grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAttachmentGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify attachment grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for attachment grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAttachmentGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify attachment grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for attachment grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAttributeCombinationDelete": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionAttributeCombinationSave": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionAttributeDelete": {
+    "type": "action",
+    "title": "Deleting an attributes features value",
+    "description": "This hook is called while deleting an attributes features value",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionAttributeGroupDelete": {
+    "type": "action",
+    "title": "Deleting attribute group",
+    "description": "This hook is called while deleting an attributes  group",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionAttributeGroupGridDataModifier": {
+    "type": "action",
+    "title": "Modify attribute group grid data",
+    "description": "This hook allows to modify attribute group grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAttributeGroupGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify attribute group grid definition",
+    "description": "This hook allows to alter attribute group grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAttributeGroupGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify attribute group grid filters",
+    "description": "This hook allows to modify filters for attribute group grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAttributeGroupGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify attribute group grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for attribute group grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAttributeGroupGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify attribute group grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for attribute group grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionAttributeGroupSave": {
+    "type": "action",
+    "title": "Saving an attribute group",
+    "description": "This hook is called while saving an attributes group",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionAttributeSave": {
+    "type": "action",
+    "title": "Saving an attributes features value",
+    "description": "This hook is called while saving an attributes features value",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionAuthentication": {
+    "type": "action",
+    "title": "Successful customer authentication",
+    "description": "This hook is displayed after a customer successfully signs in",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionAuthenticationBefore": {
+    "type": "action",
+    "title": "Triggers before customer logs in",
+    "description": "Triggers after successful validation of login form, before the login process itself.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionBackupGridDataModifier": {
+    "type": "action",
+    "title": "Modify backup grid data",
+    "description": "This hook allows to modify backup grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionBackupGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modifying DB Backup grid definition",
+    "description": "This hook allows to alter DB Backup grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionBackupGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify filters form for DB Backup grid",
+    "description": "This hook allows to alter filters form used in DB Backup",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionBackupGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify DB Backup grid view data",
+    "description": "This hook allows to alter presented DB Backup grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionBackupGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify backup grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for backup grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionBuildFrontEndObject": {
+    "type": "action",
+    "title": "Manage elements added to the \"prestashop\" javascript object",
+    "description": "This hook allows you to customize the \"prestashop\" javascript object that is included in all front office pages",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionBuildMailLayoutVariables": {
+    "type": "action",
+    "title": "Build the variables used in email layout rendering",
+    "description": "This hook allows to change the variables used when an email layout is rendered",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCarrierGridDataModifier": {
+    "type": "action",
+    "title": "Modify carrier grid data",
+    "description": "This hook allows to modify carrier grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCarrierGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify carrier grid definition",
+    "description": "This hook allows to alter carrier grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCarrierGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify carrier grid filters",
+    "description": "This hook allows to modify filters for carrier grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCarrierGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify carrier grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for carrier grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCarrierGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify carrier grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for carrier grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCarrierProcess": {
+    "type": "action",
+    "title": "Carrier process",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCarrierUpdate": {
+    "type": "action",
+    "title": "Carrier Update",
+    "description": "This hook is called when a carrier is updated",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCartGetPackageShippingCost": {
+    "type": "action",
+    "title": "After getting package shipping cost value",
+    "description": "This hook is called in order to allow to modify package shipping cost",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCartRuleGridDataModifier": {
+    "type": "action",
+    "title": "Modify cart rule grid data",
+    "description": "This hook allows to modify cart rule grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCartRuleGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify cart rule grid definition",
+    "description": "This hook allows to alter cart rule grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCartRuleGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify cart rule grid filters",
+    "description": "This hook allows to modify filters for cart rule grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCartRuleGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify cart rule grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for cart rule grid       ",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCartRuleGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify cart rule grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for cart rule grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCartSave": {
+    "type": "action",
+    "title": "Cart creation and update",
+    "description": "This hook is displayed when a product is added to the cart or if the cart''s content is modified",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCartSummary": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCartUpdateQuantityBefore": {
+    "type": "action",
+    "title": "Triggers before product is added to cart",
+    "description": "Allows responding to add to cart events.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCatalogPriceRuleGridDataModifier": {
+    "type": "action",
+    "title": "Modify catalog price rule grid data",
+    "description": "This hook allows to modify catalog price rule grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCatalogPriceRuleGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify catalog price rule grid definition",
+    "description": "This hook allows to alter catalog price rule grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCatalogPriceRuleGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify catalog price rule grid filters",
+    "description": "This hook allows to modify filters for catalog price rule grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCatalogPriceRuleGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify catalog price rule grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for catalog price rule grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCatalogPriceRuleGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify catalog price rule grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for catalog price rule grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCategoryAdd": {
+    "type": "action",
+    "title": "Category creation",
+    "description": "This hook is displayed when a category is created",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCategoryDelete": {
+    "type": "action",
+    "title": "Category deletion",
+    "description": "This hook is displayed when a category is deleted",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCategoryGridDataModifier": {
+    "type": "action",
+    "title": "Modify category grid data",
+    "description": "This hook allows to modify category grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCategoryGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify category grid definition",
+    "description": "This hook allows to alter category grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCategoryGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify category grid filters",
+    "description": "This hook allows to modify filters for category grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCategoryGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify category grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for category grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCategoryGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify category grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for category grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCategoryUpdate": {
+    "type": "action",
+    "title": "Category modification",
+    "description": "This hook is displayed when a category is modified",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCheckAttributeQuantity": {
+    "type": "action",
+    "title": "Check product attribute quantity availability",
+    "description": "Allows modules to validate or override the stock availability check for a specific product combination.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCheckoutBuildProcess": {
+    "type": "action",
+    "title": "Build checkout process",
+    "description": "This hook is triggered before the checkout is rendered. Modules may return a checkout process provider. The provider is used only when exactly one enabled and valid provider is available.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCheckoutRender": {
+    "type": "action",
+    "title": "Modify checkout process",
+    "description": "This hook is called when constructing the checkout process",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCheckoutStepRenderTemplate": {
+    "type": "action",
+    "title": "Modify the parameters of the checkout step template rendering",
+    "description": "This hook is called when rendering every checkout step template",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionClearCache": {
+    "type": "action",
+    "title": "Clear smarty cache",
+    "description": "This hook is called when smarty''s cache is cleared",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionClearCompileCache": {
+    "type": "action",
+    "title": "Clear smarty compile cache",
+    "description": "This hook is called when smarty''s compile cache is cleared",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionClearSf2Cache": {
+    "type": "action",
+    "title": "Clear Sf2 cache",
+    "description": "This hook is called when the Symfony cache is cleared",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCmsPageCategoryGridDataModifier": {
+    "type": "action",
+    "title": "Modify cms page category grid data",
+    "description": "This hook allows to modify cms page category grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCmsPageCategoryGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify cms page category grid definition",
+    "description": "This hook allows to alter cms page category grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCmsPageCategoryGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify cms page category grid filters",
+    "description": "This hook allows to modify filters for cms page category grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCmsPageCategoryGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify cms page category grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for cms page category grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCmsPageCategoryGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify cms page category grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for cms page category grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCmsPageGridDataModifier": {
+    "type": "action",
+    "title": "Modify cms page grid data",
+    "description": "This hook allows to modify cms page grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCmsPageGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify cms page grid definition",
+    "description": "This hook allows to alter cms page grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCmsPageGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify cms page grid filters",
+    "description": "This hook allows to modify filters for cms page grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCmsPageGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify cms page grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for cms page grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCmsPageGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify cms page grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for cms page grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionConfigurationUpdateValueBefore": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionContactGridDataModifier": {
+    "type": "action",
+    "title": "Modify contact grid data",
+    "description": "This hook allows to modify contact grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionContactGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify contact grid definition",
+    "description": "This hook allows to alter contact grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionContactGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify contact grid filters",
+    "description": "This hook allows to modify filters for contact grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionContactGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify contact grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for contact grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionContactGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify contact grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for contact grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionControllerInitAfter": {
+    "type": "action",
+    "title": "Perform actions after controller initialization",
+    "description": "This hook is launched after the initialization of all controllers",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionControllerInitBefore": {
+    "type": "action",
+    "title": "Perform actions before controller initialization",
+    "description": "This hook is launched before the initialization of all controllers",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCountryGridDataModifier": {
+    "type": "action",
+    "title": "Modify country grid data",
+    "description": "This hook allows to modify country grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCountryGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify country grid definition",
+    "description": "This hook allows to alter country grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCountryGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify country grid filters",
+    "description": "This hook allows to modify filters for country grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCountryGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify country grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for country grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCountryGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify country grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for country grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCreditSlipGridDataModifier": {
+    "type": "action",
+    "title": "Modify credit slip grid data",
+    "description": "This hook allows to modify credit slip grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCreditSlipGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify credit slip grid definition",
+    "description": "This hook allows to alter credit slip grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCreditSlipGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify credit slip grid filters",
+    "description": "This hook allows to modify filters for credit slip grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCreditSlipGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify credit slip grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for credit slip grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCreditSlipGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify credit slip grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for credit slip grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCurrencyGridDataModifier": {
+    "type": "action",
+    "title": "Modify currency grid data",
+    "description": "This hook allows to modify currency grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCurrencyGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify currency grid definition",
+    "description": "This hook allows to alter currency grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCurrencyGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify currency grid filters",
+    "description": "This hook allows to modify filters for currency grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCurrencyGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify currency grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for currency grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCurrencyGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify currency grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for currency grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerAccountAdd": {
+    "type": "action",
+    "title": "Successful customer account creation",
+    "description": "This hook is called when a new customer creates an account successfully",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerAccountUpdate": {
+    "type": "action",
+    "title": "Successful customer account update",
+    "description": "This hook is called when a customer updates its account successfully",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerAddGroups": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerAddressGridDataModifier": {
+    "type": "action",
+    "title": "Modify customer address grid data",
+    "description": "This hook allows to modify customer address grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerAddressGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify customer address grid definition",
+    "description": "This hook allows to alter customer address grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerAddressGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify customer address grid filters",
+    "description": "This hook allows to modify filters for customer address grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerAddressGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify customer address grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for customer address grid       ",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerAddressGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify customer address grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for customer address grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerBeforeUpdateGroup": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerBoughtProductGridDataModifier": {
+    "type": "action",
+    "title": "Modify customer bought product grid data",
+    "description": "This hook allows to modify customer bought product grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerBoughtProductGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify customer bought product grid definition",
+    "description": "This hook allows to alter customer bought product grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerBoughtProductGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify customer bought product grid filters",
+    "description": "This hook allows to modify filters for customer bought product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerBoughtProductGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify customer bought product grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for customer bought product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerBoughtProductGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify customer bought product grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for customer bought product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerCartGridDataModifier": {
+    "type": "action",
+    "title": "Modify customer cart grid data",
+    "description": "This hook allows to modify customer cart grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerCartGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify customer cart grid definition",
+    "description": "This hook allows to alter customer cart grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerCartGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify customer cart grid filters",
+    "description": "This hook allows to modify filters for customer cart grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerCartGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify customer cart grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for customer cart grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerCartGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify customer cart grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for customer cart grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerDiscountGridDataModifier": {
+    "type": "action",
+    "title": "Modify customer discount grid data",
+    "description": "This hook allows to modify customer discount grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerDiscountGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify customer discount grid definition",
+    "description": "This hook allows to alter customer discount grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerDiscountGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify customer discount grid filters",
+    "description": "This hook allows to modify filters for customer discount grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerDiscountGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify customer discount grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for customer discount grid       ",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerDiscountGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify customer discount grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for customer discount grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerGridDataModifier": {
+    "type": "action",
+    "title": "Modify customer grid data",
+    "description": "This hook allows to modify customer grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify customer grid definition",
+    "description": "This hook allows to alter customer grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify customer grid filters",
+    "description": "This hook allows to modify filters for customer grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify customer grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for customer grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify customer grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for customer grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerGroupsGridDataModifier": {
+    "type": "action",
+    "title": "Modify customer groups grid data",
+    "description": "This hook allows to modify customer groups grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerGroupsGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify customer groups grid definition",
+    "description": "This hook allows to alter customer groups grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerGroupsGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify customer groups grid filters",
+    "description": "This hook allows to modify filters for customer groups grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerGroupsGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify customer groups grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for customer groups grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerGroupsGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify customer groups grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for customer groups grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerLogoutAfter": {
+    "type": "action",
+    "title": "After customer logout",
+    "description": "This hook allows you to execute code after customer logout",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerLogoutBefore": {
+    "type": "action",
+    "title": "Before customer logout",
+    "description": "This hook allows you to execute code before customer logout",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerOrderGridDataModifier": {
+    "type": "action",
+    "title": "Modify customer order grid data",
+    "description": "This hook allows to modify customer order grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerOrderGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify customer order grid definition",
+    "description": "This hook allows to alter customer order grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerOrderGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify customer order grid filters",
+    "description": "This hook allows to modify filters for customer order grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerOrderGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify customer order grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for customer order grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerOrderGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify customer order grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for customer order grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerThreadGridDataModifier": {
+    "type": "action",
+    "title": "Modify customer thread grid data",
+    "description": "This hook allows to modify customer thread grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerThreadGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify customer thread grid definition",
+    "description": "This hook allows to alter customer thread grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerThreadGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify customer thread grid filters",
+    "description": "This hook allows to modify filters for customer thread grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerThreadGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify customer thread grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for customer thread grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerThreadGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify customer thread grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for customer thread grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerViewedProductGridDataModifier": {
+    "type": "action",
+    "title": "Modify customer viewed product grid data",
+    "description": "This hook allows to modify customer viewed product grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerViewedProductGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify customer viewed product grid definition",
+    "description": "This hook allows to alter customer viewed product grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerViewedProductGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify customer viewed product grid filters",
+    "description": "This hook allows to modify filters for customer viewed product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerViewedProductGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify customer viewed product grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for customer viewed product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionCustomerViewedProductGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify customer viewed product grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for customer viewed product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionDeleteGDPRCustomer": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "module"
+  },
+  "actionDeliveryPriceByPrice": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionDeliveryPriceByWeight": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionDisabledProductGridDataModifier": {
+    "type": "action",
+    "title": "Modify disabled product grid data",
+    "description": "This hook allows to modify disabled product grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionDisabledProductGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify disabled product grid definition",
+    "description": "This hook allows to alter disabled product grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionDisabledProductGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify disabled product grid filters",
+    "description": "This hook allows to modify filters for disabled product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionDisabledProductGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify disabled product grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for disabled product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionDisabledProductGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify disabled product grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for disabled product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionDiscountGridDataModifier": {
+    "type": "action",
+    "title": "Modify discount grid data",
+    "description": "This hook allows to modify discount grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionDiscountGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify discount grid definition",
+    "description": "This hook allows to alter discount grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionDiscountGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify discount grid filters",
+    "description": "This hook allows to modify filters for discount grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionDiscountGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify discount grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for discount grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionDiscountGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify discount grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for discount grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionDispatcher": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionDispatcherAfter": {
+    "type": "action",
+    "title": "After dispatch",
+    "description": "This hook is called at the end of the dispatch method of the Dispatcher",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionDispatcherBefore": {
+    "type": "action",
+    "title": "Before dispatch",
+    "description": "This hook is called at the beginning of the dispatch method of the Dispatcher",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionDownloadAttachment": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionDuplicateCartData": {
+    "type": "action",
+    "title": "Cart duplication",
+    "description": "This hook is triggered after all the cart related data has been duplicated",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailAddAfterContent": {
+    "type": "action",
+    "title": "Add extra content after mail content",
+    "description": "This hook is called just after fetching mail template",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailAddBeforeContent": {
+    "type": "action",
+    "title": "Add extra content before mail content",
+    "description": "This hook is called just before fetching mail template",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailBodyTemplateGridDataModifier": {
+    "type": "action",
+    "title": "Modify email body template grid data",
+    "description": "This hook allows to modify email body template grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailBodyTemplateGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify email body template grid definition",
+    "description": "This hook allows to alter email body template grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailBodyTemplateGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify email body template grid filters",
+    "description": "This hook allows to modify filters for email body template grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailBodyTemplateGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify email body template grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for email body template grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailBodyTemplateGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify email body template grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for email body template grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailLogsGridDataModifier": {
+    "type": "action",
+    "title": "Modify email logs grid data",
+    "description": "This hook allows to modify email logs grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailLogsGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modifying E-mail grid definition",
+    "description": "This hook allows to alter E-mail grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailLogsGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify filters form for E-mail grid",
+    "description": "This hook allows to alter filters form used in E-mail",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailLogsGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify E-mail grid view data",
+    "description": "This hook allows to alter presented E-mail grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailLogsGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify E-mail grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for E-mail grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmailSendBefore": {
+    "type": "action",
+    "title": "Before sending an email",
+    "description": "This hook is used to filter the content or the metadata of an email before sending it or even prevent its sending",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionEmployeeGridDataModifier": {
+    "type": "action",
+    "title": "Modify employee grid data",
+    "description": "This hook allows to modify employee grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmployeeGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify employee grid definition",
+    "description": "This hook allows to alter employee grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmployeeGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify employee grid filters",
+    "description": "This hook allows to modify filters for employee grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmployeeGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify employee grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for employee grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmployeeGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify employee grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for employee grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmptyCategoryGridDataModifier": {
+    "type": "action",
+    "title": "Modify empty category grid data",
+    "description": "This hook allows to modify empty category grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmptyCategoryGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify empty category grid definition",
+    "description": "This hook allows to alter empty category grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmptyCategoryGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify empty category grid filters",
+    "description": "This hook allows to modify filters for empty category grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmptyCategoryGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify empty category grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for empty category grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionEmptyCategoryGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify empty category grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for empty category grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionExportGDPRData": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "module"
+  },
+  "actionExtraPropertyDefinitionGridDataModifier": {
+    "type": "action",
+    "title": "Modify extra property definition grid data",
+    "description": "This hook allows to modify extra property definition grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionExtraPropertyDefinitionGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify extra property definition grid definition",
+    "description": "This hook allows to alter extra property definition grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionExtraPropertyDefinitionGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify extra property definition grid filters",
+    "description": "This hook allows to modify filters for extra property definition grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionExtraPropertyDefinitionGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify extra property definition grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for extra property definition grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionExtraPropertyDefinitionGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify extra property definition grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for extra property definition grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionFacetedSearchCacheKeyGeneration": {
+    "type": "action",
+    "title": "Customize Faceted Search cache key generation",
+    "description": "This hook allows modules to customize the cache key used by the Faceted Search module when caching filter blocks and results, especially for custom controllers and ad hoc listings.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "ps_facetedsearch"
+  },
+  "actionFacetedSearchFilters": {
+    "type": "action",
+    "title": "Customize initial Faceted Search filters for a query",
+    "description": "This hook allows modules to customize the initial state of the Faceted Search query and its filters before results are computed.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "ps_facetedsearch"
+  },
+  "actionFacetedSearchSetSupportedControllers": {
+    "type": "action",
+    "title": "Add custom controllers to Faceted Search supported controllers list",
+    "description": "This hook allows modules to declare additional controllers that should support Faceted Search filters. These controllers will appear in the module configuration template as eligible for displaying faceted filters.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "ps_facetedsearch"
+  },
+  "actionFeatureDelete": {
+    "type": "action",
+    "title": "Deleting attributes'' features",
+    "description": "This hook is called while deleting an attributes features",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionFeatureSave": {
+    "type": "action",
+    "title": "Saving attributes'' features",
+    "description": "This hook is called while saving an attributes features",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionFeatureValueDelete": {
+    "type": "action",
+    "title": "Deleting attributes'' features'' values",
+    "description": "This hook is called while deleting an attributes features value",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionFeatureValueSave": {
+    "type": "action",
+    "title": "Saving an attributes features value",
+    "description": "This hook is called while saving an attributes features value",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionFilterDeliveryOptionList": {
+    "type": "action",
+    "title": "Modify delivery option list result",
+    "description": "This hook allows you to modify delivery option list",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionFrontControllerDetectContextCountryAfter": {
+    "type": "action",
+    "title": "Action after detecting context country",
+    "description": "Allows modules to modify the context country after it has been detected via geolocation.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionFrontControllerInitAfter": {
+    "type": "action",
+    "title": "Perform actions after front office controller initialization",
+    "description": "This hook is launched after the initialization of all front office controllers",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionFrontControllerInitBefore": {
+    "type": "action",
+    "title": "Perform actions before front office controller initialization",
+    "description": "This hook is launched before the initialization of all front office controllers",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionFrontControllerInitContextCurrencyAfter": {
+    "type": "action",
+    "title": "Action after initializing context currency",
+    "description": "Allows modules to modify the context currency after it has been initialized.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionFrontControllerSetMedia": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionFrontControllerSetVariables": {
+    "type": "action",
+    "title": "Add variables in JavaScript object and Smarty templates",
+    "description": "Add variables to javascript object that is available in Front Office. These are also available in smarty templates in modules.your_module_name.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionFrontControllerSetVariablesBefore": {
+    "type": "action",
+    "title": "Add general purpose variables in JavaScript object and Smarty templates before assignation.",
+    "description": "Allows defining variables for the JavaScript object before the core does it.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionGenerateDocumentReference": {
+    "type": "action",
+    "title": "Modify document reference",
+    "description": "This hook allows modules to return custom document references",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionGetAdminOrderButtons": {
+    "type": "action",
+    "title": "Admin Order Buttons",
+    "description": "This hook is used to generate the buttons collection on the order view page (see ActionsBarButtonsCollection)",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionGetAdminToolbarButtons": {
+    "type": "action",
+    "title": "Allows to add buttons in any toolbar in the back office",
+    "description": "This hook allows you to define descriptions of buttons to add in any toolbar of the back office",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionGetAlternativeSearchPanels": {
+    "type": "action",
+    "title": "Additional search panel",
+    "description": "This hook allows to add an additional search panel for external providers in PrestaShop back office",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionGetCartRuleContextualValue": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionGetExtraMailTemplateVars": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionGetIDZoneByAddressID": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionGetMailLayoutTransformations": {
+    "type": "action",
+    "title": "Define the transformation to apply on layout",
+    "description": "This hook allows to add/remove TransformationInterface used to generate an email layout",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionGetPdfRenderer": {
+    "type": "action",
+    "title": "Allows modules to provide a custom PDF renderer",
+    "description": "This hook allows modules to provide a custom PDF renderer (PDFGenerator) for generating PDF documents like invoices, delivery slips, and order returns.",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionGetPdfTemplateObject": {
+    "type": "action",
+    "title": "Allows modules to provide custom PDF template objects",
+    "description": "This hook allows modules to override the default PDF template object used for generating PDFs like invoices, delivery slips, and order returns.",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionGetProductPropertiesAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionGetProductPropertiesAfterUnitPrice": {
+    "type": "action",
+    "title": "Product Properties",
+    "description": "This hook is called after defining the properties of a product",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionGetProductPropertiesBefore": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionHtaccessCreate": {
+    "type": "action",
+    "title": "After htaccess creation",
+    "description": "This hook is displayed after the htaccess creation",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionInvoiceNumberFormatted": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionLanguageGridDataModifier": {
+    "type": "action",
+    "title": "Modify language grid data",
+    "description": "This hook allows to modify language grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionLanguageGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify language grid definition",
+    "description": "This hook allows to alter language grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionLanguageGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify language grid filters",
+    "description": "This hook allows to modify filters for language grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionLanguageGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify language grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for language grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionLanguageGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify language grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for language grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionLanguageLinkParameters": {
+    "type": "action",
+    "title": "Add parameters to language link",
+    "description": "Allows modules to provide proper parameters for links in other languages.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionListMailThemes": {
+    "type": "action",
+    "title": "List the available email themes and layouts",
+    "description": "This hook allows to add/remove available email themes (ThemeInterface) and/or to add/remove their layouts (LayoutInterface)",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionListModules": {
+    "type": "action",
+    "title": "Allows you to add your own modules from a remote source in the modules list in the back office.",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionLoggerLogMessage": {
+    "type": "action",
+    "title": "Allows to make extra action while a log is triggered",
+    "description": "This hook allows to make an extra action while an exception is thrown and the logger logs it",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionLogsGridDataModifier": {
+    "type": "action",
+    "title": "Modify logs grid data",
+    "description": "This hook allows to modify logs grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionLogsGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modifying Logs grid definition",
+    "description": "This hook allows to alter Logs grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionLogsGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify filters form for Logs grid",
+    "description": "This hook allows to alter filters form used in Logs",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionLogsGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify Logs grid view data",
+    "description": "This hook allows to alter presented Logs grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionLogsGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify Logs grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for Logs grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionMailAlterMessageBeforeSend": {
+    "type": "action",
+    "title": "Modify Swift Message before sending",
+    "description": "This hook is called before the Swift Message is sent in Mail.php",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionMainMenuModifier": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "module"
+  },
+  "actionManufacturerAddressGridDataModifier": {
+    "type": "action",
+    "title": "Modify manufacturer address grid data",
+    "description": "This hook allows to modify manufacturer address grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionManufacturerAddressGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify manufacturer address grid definition",
+    "description": "This hook allows to alter manufacturer address grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionManufacturerAddressGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify manufacturer address grid filters",
+    "description": "This hook allows to modify filters for manufacturer address grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionManufacturerAddressGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify manufacturer address grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for manufacturer address grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionManufacturerAddressGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify manufacturer address grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for manufacturer address grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionManufacturerGridDataModifier": {
+    "type": "action",
+    "title": "Modify manufacturer grid data",
+    "description": "This hook allows to modify manufacturer grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionManufacturerGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify manufacturer grid definition",
+    "description": "This hook allows to alter manufacturer grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionManufacturerGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify manufacturer grid filters",
+    "description": "This hook allows to modify filters for manufacturer grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionManufacturerGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify manufacturer grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for manufacturer grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionManufacturerGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify manufacturer grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for manufacturer grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionMerchandiseReturnGridDataModifier": {
+    "type": "action",
+    "title": "Modify merchandise return grid data",
+    "description": "This hook allows to modify merchandise return grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionMerchandiseReturnGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify merchandise return grid definition",
+    "description": "This hook allows to alter merchandise return grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionMerchandiseReturnGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify merchandise return grid filters",
+    "description": "This hook allows to modify filters for merchandise return grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionMerchandiseReturnGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify merchandise return grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for merchandise return grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionMerchandiseReturnGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify merchandise return grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for merchandise return grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionMetaGridDataModifier": {
+    "type": "action",
+    "title": "Modify meta grid data",
+    "description": "This hook allows to modify meta grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionMetaGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modifying SEO and URLs grid definition",
+    "description": "This hook allows to alter SEO and URLs grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionMetaGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify filters form for SEO and URLs grid",
+    "description": "This hook allows to alter filters form used in SEO and URLs",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionMetaGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify SEO and URLs grid view data",
+    "description": "This hook allows to alter presented SEO and URLs grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionMetaGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify SEO and URLs grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for SEO and URLs grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionModifyFrontendSitemap": {
+    "type": "action",
+    "title": "Add or remove links on sitemap page",
+    "description": "This hook allows to modify links on sitemap page of your shop. Useful to improve indexation of your modules.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModifyHtmlPurifierConfig": {
+    "type": "action",
+    "title": "Called when configuring HTMLPurifier",
+    "description": "Allows modules to modify the HTMLPurifier definition by adding custom allowed HTML elements or attributes during Tools::purifyHTML().",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModuleDisable": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModuleEnable": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModuleInstallAfter": {
+    "type": "action",
+    "title": "actionModuleInstallAfter",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModuleInstallBefore": {
+    "type": "action",
+    "title": "actionModuleInstallBefore",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModuleMailAlertSendCustomer": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "module"
+  },
+  "actionModuleRegisterHookAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModuleRegisterHookBefore": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModuleUninstallAfter": {
+    "type": "action",
+    "title": "actionModuleUninstallAfter",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModuleUninstallBefore": {
+    "type": "action",
+    "title": "actionModuleUninstallBefore",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModuleUnRegisterHookAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModuleUnRegisterHookBefore": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionModuleUpgradeAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionNewsletterRegistrationAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "module"
+  },
+  "actionNewsletterRegistrationBefore": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "module"
+  },
+  "actionNoQtyProductWithCombinationGridDataModifier": {
+    "type": "action",
+    "title": "Modify no qty product with combination grid data",
+    "description": "This hook allows to modify no qty product with combination grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionNoQtyProductWithCombinationGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify no qty product with combination grid definition",
+    "description": "This hook allows to alter no qty product with combination grid columns, actions and filters       ",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionNoQtyProductWithCombinationGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify no qty product with combination grid filters",
+    "description": "This hook allows to modify filters for no qty product with combination grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionNoQtyProductWithCombinationGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify no qty product with combination grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for no qty product with combination grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionNoQtyProductWithCombinationGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify no qty product with combination grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for no qty product with combination grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionNoQtyProductWithoutCombinationGridDataModifier": {
+    "type": "action",
+    "title": "Modify no qty product without combination grid data",
+    "description": "This hook allows to modify no qty product without combination grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionNoQtyProductWithoutCombinationGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify no qty product without combination grid definition",
+    "description": "This hook allows to alter no qty product without combination grid columns, actions and filters       ",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionNoQtyProductWithoutCombinationGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify no qty product without combination grid filters",
+    "description": "This hook allows to modify filters for no qty product without combination grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionNoQtyProductWithoutCombinationGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify no qty product without combination grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for no qty product without combination grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionNoQtyProductWithoutCombinationGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify no qty product without combination grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for no qty product without combination grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionNotFound": {
+    "type": "action",
+    "title": "Action when a page is not found",
+    "description": "Allows modules to react when a page is not found - log it, redirect or perform other actions.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionObjectAddAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionObjectAddBefore": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionObjectAttributeAddBefore": {
+    "type": "action",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionObjectAttributeGroupAddBefore": {
+    "type": "action",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionObjectDeleteAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionObjectDeleteBefore": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionObjectDuplicateAfter": {
+    "type": "action",
+    "title": "After duplicating an object",
+    "description": "This hook is called after duplicating an object by the core.",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionObjectProductCommentValidateAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "module"
+  },
+  "actionObjectProductInCartDeleteAfter": {
+    "type": "action",
+    "title": "Cart product removal",
+    "description": "This hook is called after a product is removed from a cart",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionObjectProductInCartDeleteBefore": {
+    "type": "action",
+    "title": "Cart product removal",
+    "description": "This hook is called before a product is removed from a cart",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionObjectUpdateAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionObjectUpdateBefore": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office",
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOnImageCutAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOnImageResizeAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderEdited": {
+    "type": "action",
+    "title": "Order edited",
+    "description": "This hook is called when an order is edited",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderGridDataModifier": {
+    "type": "action",
+    "title": "Modify order grid data",
+    "description": "This hook allows to modify order grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify order grid definition",
+    "description": "This hook allows to alter order grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify order grid filters",
+    "description": "This hook allows to modify filters for order grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify order grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for order grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify order grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for order grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderHasBeenDelivered": {
+    "type": "action",
+    "title": "Called when checking if an order has been delivered",
+    "description": "Allows modules to override or react to the hasBeenDelivered() method of the Order class.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderHasBeenShipped": {
+    "type": "action",
+    "title": "Called when checking if an order has been shipped",
+    "description": "Allows modules to override or react to the hasBeenShipped() method of the Order class.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderHistoryAddAfter": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderMessageGridDataModifier": {
+    "type": "action",
+    "title": "Modify order message grid data",
+    "description": "This hook allows to modify order message grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderMessageGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify order message grid definition",
+    "description": "This hook allows to alter order message grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderMessageGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify order message grid filters",
+    "description": "This hook allows to modify filters for order message grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderMessageGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify order message grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for order message grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderMessageGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify order message grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for order message grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderReturn": {
+    "type": "action",
+    "title": "Returned product",
+    "description": "This hook is displayed when a customer returns a product ",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderReturnStatesGridDataModifier": {
+    "type": "action",
+    "title": "Modify order return states grid data",
+    "description": "This hook allows to modify order return states grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderReturnStatesGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify order return states grid definition",
+    "description": "This hook allows to alter order return states grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderReturnStatesGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify order return states grid filters",
+    "description": "This hook allows to modify filters for order return states grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderReturnStatesGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify order return states grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for order return states grid       ",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderReturnStatesGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify order return states grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for order return states grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderSlipAdd": {
+    "type": "action",
+    "title": "Order slip creation",
+    "description": "This hook is called when a new credit slip is added regarding client order",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderStatesGridDataModifier": {
+    "type": "action",
+    "title": "Modify order states grid data",
+    "description": "This hook allows to modify order states grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderStatesGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify order states grid definition",
+    "description": "This hook allows to alter order states grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderStatesGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify order states grid filters",
+    "description": "This hook allows to modify filters for order states grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderStatesGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify order states grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for order states grid       ",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderStatesGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify order states grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for order states grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderStatusPostUpdate": {
+    "type": "action",
+    "title": "Post update of order status",
+    "description": "Allows to be notified after order status is changed.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOrderStatusUpdate": {
+    "type": "action",
+    "title": "Order status update - Event",
+    "description": "This hook launches modules when the status of an order changes",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOutputHTMLBefore": {
+    "type": "action",
+    "title": "Before HTML output",
+    "description": "This hook is used to filter the whole HTML page before it is rendered (only front)",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOutstandingGridDataModifier": {
+    "type": "action",
+    "title": "Modify outstanding grid data",
+    "description": "This hook allows to modify outstanding grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOutstandingGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify outstanding grid definition",
+    "description": "This hook allows to alter outstanding grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOutstandingGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify outstanding grid filters",
+    "description": "This hook allows to modify filters for outstanding grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOutstandingGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify outstanding grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for outstanding grid       ",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOutstandingGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify outstanding grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for outstanding grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionOverrideEmployeeImage": {
+    "type": "action",
+    "title": "Get Employee Image",
+    "description": "This hook is used to get the employee image",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOverrideProductQuantity": {
+    "type": "action",
+    "title": "Override product quantity calculation",
+    "description": "Allows modules to override the final product quantity returned by Product::getQuantity(), including cart-aware calculations.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOverrideQuantityAvailableByProduct": {
+    "type": "action",
+    "title": "Override available quantity by product",
+    "description": "Allows modules to override the available quantity returned by StockAvailable::getQuantityAvailableByProduct().",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOverrideShippingFreePrice": {
+    "type": "action",
+    "title": "Override price that determines free shipping",
+    "description": "Allows modules to override the free shipping price and return their custom value, for example to specify it by zone or other criteria.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionOverrideShippingFreeWeight": {
+    "type": "action",
+    "title": "Override weight that determines free shipping",
+    "description": "Allows modules to override the free shipping weight and return their custom value, for example to specify it by zone or other criteria.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPasswordRenew": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPaymentCCAdd": {
+    "type": "action",
+    "title": "Payment CC added",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPaymentConfirmation": {
+    "type": "action",
+    "title": "Payment confirmation",
+    "description": "This hook displays new elements after the payment is validated",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPaymentModuleProductVarTplAfter": {
+    "type": "action",
+    "title": "Triggers after product data is prepared for e-mail template",
+    "description": "Allows to modify product data in e-mail template.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPDFInvoiceRender": {
+    "type": "action",
+    "title": "PDF Invoice - Render",
+    "description": "This hook is called when a PDF invoice is rendered from the Front Office and the Back Office",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentCart": {
+    "type": "action",
+    "title": "Cart Presenter",
+    "description": "This hook is called before a cart is presented",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentCartProduct": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentCategory": {
+    "type": "action",
+    "title": "Category Presenter",
+    "description": "This hook is called before a category is presented",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentManufacturer": {
+    "type": "action",
+    "title": "Manufacturer Presenter",
+    "description": "This hook is called before a manufacturer is presented",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentModule": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentObject": {
+    "type": "action",
+    "title": "Object Presenter",
+    "description": "This hook is called before an object is presented",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentOrder": {
+    "type": "action",
+    "title": "Order Presenter",
+    "description": "This hook is called before an order is presented",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentOrderReturn": {
+    "type": "action",
+    "title": "Order Return Presenter",
+    "description": "This hook is called before an order return is presented",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentPaymentOptions": {
+    "type": "action",
+    "title": "Payment options Presenter",
+    "description": "This hook is called before payment options are presented",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentProduct": {
+    "type": "action",
+    "title": "Product Presenter",
+    "description": "This hook is called before a product is presented",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentProductListing": {
+    "type": "action",
+    "title": "Product Listing Presenter",
+    "description": "This hook is called before a product listing is presented",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentStore": {
+    "type": "action",
+    "title": "Store Presenter",
+    "description": "This hook is called before a store is presented",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionPresentSupplier": {
+    "type": "action",
+    "title": "Supplier Presenter",
+    "description": "This hook is called before a supplier is presented",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductActivation": {
+    "type": "action",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductAdd": {
+    "type": "action",
+    "title": "Product creation",
+    "description": "This hook is displayed after a product is created",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductAttributeDelete": {
+    "type": "action",
+    "title": "Product attribute deletion",
+    "description": "This hook is displayed when a product''s attribute is deleted",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductAttributeUpdate": {
+    "type": "action",
+    "title": "Product attribute update",
+    "description": "This hook is displayed when a product''s attribute is updated",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductCancel": {
+    "type": "action",
+    "title": "Product cancelled",
+    "description": "This hook is called when you cancel a product in an order",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductCoverage": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductDelete": {
+    "type": "action",
+    "title": "Product deletion",
+    "description": "This hook is called when a product is deleted",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductGetAttributesGroupsAfter": {
+    "type": "action",
+    "title": "Triggers after getting product attributes groups",
+    "description": "Allows to modify product attributes groups after they are retrieved from the database.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductGetAttributesGroupsBefore": {
+    "type": "action",
+    "title": "Triggers before getting product attributes groups",
+    "description": "Allows to modify product attributes groups SQL query before they are retrieved from the database.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductGridDataModifier": {
+    "type": "action",
+    "title": "Modify product grid data",
+    "description": "This hook allows to modify product grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify product grid definition",
+    "description": "This hook allows to alter product grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify product grid filters",
+    "description": "This hook allows to modify filters for product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify product grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify product grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for product grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductOutOfStock": {
+    "type": "action",
+    "title": "Out-of-stock product",
+    "description": "This hook displays new action buttons if a product is out of stock",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "actionProductPriceCalculation": {
+    "type": "action",
+    "title": "Product Price Calculation",
+    "description": "This hook is called into the priceCalculation method to be able to override the price calculation",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductSave": {
+    "type": "action",
+    "title": "Saving products",
+    "description": "This hook is called while saving products",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductSearchAfter": {
+    "type": "action",
+    "title": "Event triggered after search product completed",
+    "description": "This hook is called after the product search. Parameters are already filter",
+    "locations": [
+      "front office"
+    ],
+    "origin": "module"
+  },
+  "actionProductSearchProviderRunQueryAfter": {
+    "type": "action",
+    "title": "Runs an action after ProductSearchProviderInterface::RunQuery()",
+    "description": "Required to return a previous state of an SQL query or/and to change a result of the SQL query after executing it",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductSearchProviderRunQueryBefore": {
+    "type": "action",
+    "title": "Runs an action before ProductSearchProviderInterface::RunQuery()",
+    "description": "Required to modify an SQL query before executing it",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionProductUpdate": {
+    "type": "action",
+    "title": "Product update",
+    "description": "This hook is displayed after a product has been updated",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutDescriptionGridDataModifier": {
+    "type": "action",
+    "title": "Modify product without description grid data",
+    "description": "This hook allows to modify product without description grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutDescriptionGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify product without description grid definition",
+    "description": "This hook allows to alter product without description grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutDescriptionGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify product without description grid filters",
+    "description": "This hook allows to modify filters for product without description grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutDescriptionGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify product without description grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for product without description grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutDescriptionGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify product without description grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for product without description grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutImageGridDataModifier": {
+    "type": "action",
+    "title": "Modify product without image grid data",
+    "description": "This hook allows to modify product without image grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutImageGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify product without image grid definition",
+    "description": "This hook allows to alter product without image grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutImageGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify product without image grid filters",
+    "description": "This hook allows to modify filters for product without image grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutImageGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify product without image grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for product without image grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutImageGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify product without image grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for product without image grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutPriceGridDataModifier": {
+    "type": "action",
+    "title": "Modify product without price grid data",
+    "description": "This hook allows to modify product without price grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutPriceGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify product without price grid definition",
+    "description": "This hook allows to alter product without price grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutPriceGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify product without price grid filters",
+    "description": "This hook allows to modify filters for product without price grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutPriceGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify product without price grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for product without price grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProductWithoutPriceGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify product without price grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for product without price grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProfileGridDataModifier": {
+    "type": "action",
+    "title": "Modify profile grid data",
+    "description": "This hook allows to modify profile grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProfileGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify profile grid definition",
+    "description": "This hook allows to alter profile grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProfileGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify profile grid filters",
+    "description": "This hook allows to modify filters for profile grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProfileGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify profile grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for profile grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionProfileGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify profile grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for profile grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSearch": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionSearchEngineGridDataModifier": {
+    "type": "action",
+    "title": "Modify search engine grid data",
+    "description": "This hook allows to modify search engine grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSearchEngineGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify search engine grid definition",
+    "description": "This hook allows to alter search engine grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSearchEngineGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify search engine grid filters",
+    "description": "This hook allows to modify filters for search engine grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSearchEngineGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify search engine grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for search engine grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSearchEngineGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify search engine grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for search engine grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSecuritySessionCustomerGridDataModifier": {
+    "type": "action",
+    "title": "Modify security session customer grid data",
+    "description": "This hook allows to modify security session customer grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSecuritySessionCustomerGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify security session customer grid definition",
+    "description": "This hook allows to alter security session customer grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSecuritySessionCustomerGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify security session customer grid filters",
+    "description": "This hook allows to modify filters for security session customer grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSecuritySessionCustomerGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify security session customer grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for security session customer grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSecuritySessionCustomerGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify security session customer grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for security session customer grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSecuritySessionEmployeeGridDataModifier": {
+    "type": "action",
+    "title": "Modify security session employee grid data",
+    "description": "This hook allows to modify security session employee grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSecuritySessionEmployeeGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify security session employee grid definition",
+    "description": "This hook allows to alter security session employee grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSecuritySessionEmployeeGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify security session employee grid filters",
+    "description": "This hook allows to modify filters for security session employee grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSecuritySessionEmployeeGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify security session employee grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for security session employee grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSecuritySessionEmployeeGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify security session employee grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for security session employee grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSetInvoice": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionShopDataDuplication": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionSqlRequestGridDataModifier": {
+    "type": "action",
+    "title": "Modify sql request grid data",
+    "description": "This hook allows to modify sql request grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSqlRequestGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modifying SQL Manager grid definition",
+    "description": "This hook allows to alter SQL Manager grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSqlRequestGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify filters form for SQL Manager grid",
+    "description": "This hook allows to alter filters form used in SQL Manager",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSqlRequestGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify SQL Manager grid view data",
+    "description": "This hook allows to alter presented SQL Manager grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSqlRequestGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify SQL Manager grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for SQL Manager grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionStateGridDataModifier": {
+    "type": "action",
+    "title": "Modify state grid data",
+    "description": "This hook allows to modify state grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionStateGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify state grid definition",
+    "description": "This hook allows to alter state grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionStateGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify state grid filters",
+    "description": "This hook allows to modify filters for state grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionStateGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify state grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for state grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionStateGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify state grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for state grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSubmitAccountBefore": {
+    "type": "action",
+    "title": "Before customer account creation",
+    "description": "This hook is called before a customer account creation",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionSubmitCustomerAddressForm": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionSupplierGridDataModifier": {
+    "type": "action",
+    "title": "Modify supplier grid data",
+    "description": "This hook allows to modify supplier grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSupplierGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify supplier grid definition",
+    "description": "This hook allows to alter supplier grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSupplierGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify supplier grid filters",
+    "description": "This hook allows to modify filters for supplier grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSupplierGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify supplier grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for supplier grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionSupplierGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify supplier grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for supplier grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTaxGridDataModifier": {
+    "type": "action",
+    "title": "Modify tax grid data",
+    "description": "This hook allows to modify tax grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTaxGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify tax grid definition",
+    "description": "This hook allows to alter tax grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTaxGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify tax grid filters",
+    "description": "This hook allows to modify filters for tax grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTaxGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify tax grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for tax grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTaxGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify tax grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for tax grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTaxManager": {
+    "type": "action",
+    "title": "Tax Manager Factory",
+    "description": "This hook is launched by the Tax Manager Factory",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionTaxRulesGroupGridDataModifier": {
+    "type": "action",
+    "title": "Modify tax rules group grid data",
+    "description": "This hook allows to modify tax rules group grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTaxRulesGroupGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify tax rules group grid definition",
+    "description": "This hook allows to alter tax rules group grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTaxRulesGroupGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify tax rules group grid filters",
+    "description": "This hook allows to modify filters for tax rules group grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTaxRulesGroupGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify tax rules group grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for tax rules group grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTaxRulesGroupGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify tax rules group grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for tax rules group grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTitleGridDataModifier": {
+    "type": "action",
+    "title": "Modify title grid data",
+    "description": "This hook allows to modify title grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTitleGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify title grid definition",
+    "description": "This hook allows to alter title grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTitleGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify title grid filters",
+    "description": "This hook allows to modify filters for title grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTitleGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify title grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for title grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionTitleGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify title grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for title grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionUpdateCartAddress": {
+    "type": "action",
+    "title": "Triggers after changing address on the cart",
+    "description": "This hook is called after address is changed on the cart",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionUpdateDefaultCombinationAfter": {
+    "type": "action",
+    "title": "React after a product default combination is updated",
+    "description": "This hook is triggered after a product default combination is set (updated in database), allowing modules to react to the new default combination.",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionUpdateLangAfter": {
+    "type": "action",
+    "title": "Update \"lang\" tables",
+    "description": "Update \"lang\" tables after adding or updating a language",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionUpdateQuantity": {
+    "type": "action",
+    "title": "Quantity update",
+    "description": "Quantity is updated only when a customer effectively places their order",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionValidateCartRule": {
+    "type": "action",
+    "title": "Alter cart rule validation process",
+    "description": "Allow modules to implement their own rules to validate a cart rule.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionValidateCustomerAddressForm": {
+    "type": "action",
+    "title": "Customer address form validation",
+    "description": "This hook is called when a customer submit its address form",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionValidateOrder": {
+    "type": "action",
+    "title": "New orders",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionValidateOrderAfter": {
+    "type": "action",
+    "title": "After validating an order",
+    "description": "This hook is called after validating an order by core",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionValidateOrderBefore": {
+    "type": "action",
+    "title": "Before validating an order",
+    "description": "This hook is called before validating an order by core",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionValidateStepComplete": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionWatermark": {
+    "type": "action",
+    "title": "Watermark",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "actionWebserviceKeyGridDataModifier": {
+    "type": "action",
+    "title": "Modify webservice key grid data",
+    "description": "This hook allows to modify webservice key grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionWebserviceKeyGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modifying Webservice grid definition",
+    "description": "This hook allows to alter Webservice grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionWebserviceKeyGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify filters form for Webservice grid",
+    "description": "This hook allows to alter filters form used in Webservice",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionWebserviceKeyGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify Webservice grid view data",
+    "description": "This hook allows to alter presented Webservice grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionWebserviceKeyGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify Webservice grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for Webservice grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionWishlistAddProduct": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "module"
+  },
+  "actionZoneGridDataModifier": {
+    "type": "action",
+    "title": "Modify zone grid data",
+    "description": "This hook allows to modify zone grid data",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionZoneGridDefinitionModifier": {
+    "type": "action",
+    "title": "Modify zone grid definition",
+    "description": "This hook allows to alter zone grid columns, actions and filters",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionZoneGridFilterFormModifier": {
+    "type": "action",
+    "title": "Modify zone grid filters",
+    "description": "This hook allows to modify filters for zone grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionZoneGridPresenterModifier": {
+    "type": "action",
+    "title": "Modify zone grid template data",
+    "description": "This hook allows to modify data which is about to be used in template for zone grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "actionZoneGridQueryBuilderModifier": {
+    "type": "action",
+    "title": "Modify zone grid query builder",
+    "description": "This hook allows to alter Doctrine query builder for zone grid",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "adaptImageLink": {
+    "type": "action",
+    "title": "Adapt product image link",
+    "description": "Allows to dynamically modify the final image URL generated by getImageLink(), using a reference to the final value.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "additionalCustomerAddressFields": {
+    "type": "action",
+    "title": "Add fields to the Customer address form",
+    "description": "This hook returns an array of FormFields to add them to the customer address registration form",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "additionalCustomerFormFields": {
+    "type": "action",
+    "title": "Add fields to the Customer form",
+    "description": "This hook returns an array of FormFields to add them to the customer registration form",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "additionalHtmlAttributesFormFields": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "addWebserviceResources": {
+    "type": "action",
+    "title": "Add extra webservice resource",
+    "description": "This hook is called when webservice resources list in webservice controller",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "dashboardData": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "dashboardZoneOne": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "dashboardZoneThree": {
+    "type": "action",
+    "title": "Dashboard column three",
+    "description": "This hook is displayed in the third column of the dashboard",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "dashboardZoneTwo": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "deleteProductAttribute": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayAdditionalCustomerAddressFields": {
+    "type": "display",
+    "title": "Display additional customer address fields",
+    "description": "This hook allows to display extra field values added in an address form using hook 'additionalCustomerAddressFields",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayAddressSelectorBottom": {
+    "type": "display",
+    "title": "After address selection on checkout page",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayAdminAfterHeader": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminCustomers": {
+    "type": "display",
+    "title": "Display new elements in the Back Office, tab AdminCustomers",
+    "description": "This hook launches modules when the AdminCustomers tab is displayed in the Back Office",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminDashboardBottom": {
+    "type": "display",
+    "title": "Symfony Dashboard - Bottom",
+    "description": "Displays module content in a full-width area at the bottom of the migrated (Symfony) dashboard page.",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminDashboardToolbar": {
+    "type": "display",
+    "title": "Symfony Dashboard - Toolbar",
+    "description": "Displays module content in the toolbar area of the migrated (Symfony) dashboard page. Modern counterpart of the legacy displayDashboardToolbarTopMenu hook.",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminDashboardTop": {
+    "type": "display",
+    "title": "Symfony Dashboard - Top",
+    "description": "Displays module content in the top area of the migrated (Symfony) dashboard page. Modern counterpart of the legacy displayDashboardTop hook.",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminDashboardZoneOne": {
+    "type": "display",
+    "title": "Symfony Dashboard - Zone one",
+    "description": "Displays module content in the first column of the migrated (Symfony) dashboard page. Modern counterpart of the legacy dashboardZoneOne hook.",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminDashboardZoneThree": {
+    "type": "display",
+    "title": "Symfony Dashboard - Zone three",
+    "description": "Displays module content in the third column of the migrated (Symfony) dashboard page. Modern counterpart of the legacy dashboardZoneThree hook.",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminDashboardZoneTwo": {
+    "type": "display",
+    "title": "Symfony Dashboard - Zone two",
+    "description": "Displays module content in the second column of the migrated (Symfony) dashboard page. Modern counterpart of the legacy dashboardZoneTwo hook.",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminEndContent": {
+    "type": "display",
+    "title": "Administration end of content",
+    "description": "This hook is displayed at the end of the main content, before the footer",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminForm": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminGridTableAfter": {
+    "type": "display",
+    "title": "Display after Grid table",
+    "description": "This hook adds new blocks after Grid component table",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminGridTableBefore": {
+    "type": "display",
+    "title": "Display before Grid table",
+    "description": "This hook adds new blocks before Grid component table",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminListAfter": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminListBefore": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminLogin": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminNavBarBeforeEnd": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminOptions": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminOrder": {
+    "type": "display",
+    "title": "Display new elements in the Back Office, tab AdminOrder",
+    "description": "This hook launches modules when the AdminOrder tab is displayed in the Back Office",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminOrderCreateExtraButtons": {
+    "type": "display",
+    "title": "Add buttons on the create order page dropdown",
+    "description": "Add buttons on the create order page dropdown",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminOrderMain": {
+    "type": "display",
+    "title": "Admin Order Main Column",
+    "description": "This hook displays content in the order view page in the main column under the details view",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminOrderMainBottom": {
+    "type": "display",
+    "title": "Admin Order Main Column Bottom",
+    "description": "This hook displays content in the order view page at the bottom of the main column",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminOrderSide": {
+    "type": "display",
+    "title": "Admin Order Side Column",
+    "description": "This hook displays content in the order view page in the side column under the customer view",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminOrderSideBottom": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminOrderTabContent": {
+    "type": "display",
+    "title": "Display new elements in the Back Office, tab contents on order",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminOrderTabLink": {
+    "type": "display",
+    "title": "Display new elements in the Back Office, tab links on order",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminOrderTop": {
+    "type": "display",
+    "title": "Display new elements in the Back Office, top of Order page",
+    "description": "This hook launches modules when the Order is displayed in the Back Office",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminProductsCombinationBottom": {
+    "type": "display",
+    "title": "Display new elements in back office product page, Combination tab",
+    "description": "This hook launches modules when the back office product page is displayed",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminProductsExtra": {
+    "type": "display",
+    "title": "Display new elements in back office product page, Extra tab",
+    "description": "This form type is used to display modules in an extra tab that regroup the modules implementing the displayAdminProductsExtra hook. This is not the recommended way to integrate in the product page anymore but we keep it for backward compatibility. See **[Extending the new product page form](/9/modules/sample-modules/extend-product-page/)**.",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminProductsMainStepLeftColumnBottom": {
+    "type": "display",
+    "title": "Display new elements in back office product page, left column of the Basic settings tab",
+    "description": "This hook launches modules when the back office product page is displayed",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminProductsMainStepLeftColumnMiddle": {
+    "type": "display",
+    "title": "Display new elements in back office product page, left column of the Basic settings tab",
+    "description": "This hook launches modules when the back office product page is displayed",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminProductsMainStepRightColumnBottom": {
+    "type": "display",
+    "title": "Display new elements in back office product page, right column of the Basic settings tab",
+    "description": "This hook launches modules when the back office product page is displayed",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminProductsOptionsStepBottom": {
+    "type": "display",
+    "title": "Display new elements in back office product page, Options tab",
+    "description": "This hook launches modules when the back office product page is displayed",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminProductsOptionsStepTop": {
+    "type": "display",
+    "title": "Display new elements in back office product page, Options tab",
+    "description": "This hook launches modules when the back office product page is displayed",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminProductsPriceStepBottom": {
+    "type": "display",
+    "title": "Display new elements in back office product page, Price tab",
+    "description": "This hook launches modules when the back office product page is displayed",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminProductsQuantitiesStepBottom": {
+    "type": "display",
+    "title": "Display new elements in back office product page, Quantities/Combinations tab",
+    "description": "This hook launches modules when the back office product page is displayed",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminProductsSeoStepBottom": {
+    "type": "display",
+    "title": "Display new elements in back office product page, SEO tab",
+    "description": "This hook launches modules when the back office product page is displayed",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminProductsShippingStepBottom": {
+    "type": "display",
+    "title": "Display new elements in back office product page, Shipping tab",
+    "description": "This hook launches modules when the back office product page is displayed",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminStatsGraphEngine": {
+    "type": "display",
+    "title": [],
+    "description": "Permits creating graph engines for the back office, you can refer to our [`GraphNvD3` implementation](https://github.com/PrestaShop/graphnvd3).",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminStatsGridEngine": {
+    "type": "display",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminStatsModules": {
+    "type": "display",
+    "title": "Stats - Modules",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminStoreInformation": {
+    "type": "display",
+    "title": "Display extra store information",
+    "description": "This hook displays content in the Information page to add store information",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminThemesListAfter": {
+    "type": "display",
+    "title": "BO themes list extra content",
+    "description": "This hook displays content after the themes list in the back office",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAdminView": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayAfterBodyOpeningTag": {
+    "type": "display",
+    "title": "Very top of pages",
+    "description": "Use this hook for advertisement or modals you want to load first",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayAfterCarrier": {
+    "type": "display",
+    "title": "After carriers list",
+    "description": "This hook is displayed after the carrier list in Front Office",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayAfterProductThumbs": {
+    "type": "display",
+    "title": "Display extra content below product thumbs",
+    "description": "This hook displays new elements below product images ex. additional media",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayAfterTitleTag": {
+    "type": "display",
+    "title": "After title tag",
+    "description": "Use this hook to add content after title tag",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayAttributeForm": {
+    "type": "display",
+    "title": [],
+    "description": "This hook adds fields to the form 'attribute value",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayBackOfficeEmployeeMenu": {
+    "type": "display",
+    "title": "Administration Employee menu",
+    "description": "This hook is displayed in the employee menu",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayBackOfficeFooter": {
+    "type": "display",
+    "title": "Administration panel footer",
+    "description": "This hook is displayed within the admin panel''s footer",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayBackOfficeHeader": {
+    "type": "display",
+    "title": "Administration panel header",
+    "description": "This hook is displayed in the header of the admin panel",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayBackOfficeTop": {
+    "type": "display",
+    "title": "Administration panel hover the tabs",
+    "description": "This hook is displayed on the roll hover of the tabs within the admin panel",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayBanner": {
+    "type": "display",
+    "title": "Very top of pages",
+    "description": "Use this hook for banners on top of every pages",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayBeforeBodyClosingTag": {
+    "type": "display",
+    "title": "Very bottom of pages",
+    "description": "Use this hook for your modals or any content you want to load at the very end",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayBeforeCarrier": {
+    "type": "display",
+    "title": "Before carriers list",
+    "description": "This hook is displayed before the carrier list in Front Office",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayCarrierExtraContent": {
+    "type": "display",
+    "title": "Display additional content for a carrier (e.g pickup points)",
+    "description": "This hook calls only the module related to the carrier, in order to add options when needed",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayCartBelowSummary": {
+    "type": "display",
+    "title": "Display content below summary on cart page",
+    "description": "Allows you to display content on front office cart page, below the totals summary.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayCartExtraProductActions": {
+    "type": "display",
+    "title": "Extra buttons in shopping cart",
+    "description": "This hook adds extra buttons to the product lines, in the shopping cart",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCartExtraProductInfo": {
+    "type": "display",
+    "title": "Extra information in shopping cart product line",
+    "description": "This hook adds extra information to the product lines, in the shopping cart",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCartModalContent": {
+    "type": "display",
+    "title": "Content of Add-to-cart modal",
+    "description": "This hook displays content in the middle of the window that appears after adding product to cart",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCartModalFooter": {
+    "type": "display",
+    "title": "Bottom of Add-to-cart modal",
+    "description": "This hook displays content in the bottom of window that appears after adding product to cart",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCheckoutBeforeConfirmation": {
+    "type": "display",
+    "title": "Show custom content before checkout confirmation",
+    "description": "This hook allows you to display custom content at the end of checkout process",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCheckoutSubtotalDetails": {
+    "type": "display",
+    "title": "displayCheckoutSubtotalDetails",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCheckoutSummaryTop": {
+    "type": "display",
+    "title": "Cart summary top",
+    "description": "This hook allows you to display new elements in top of cart summary",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCMSDisputeInformation": {
+    "type": "display",
+    "title": "displayCMSDisputeInformation",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCMSPrintButton": {
+    "type": "display",
+    "title": "displayCMSPrintButton",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayContactContent": {
+    "type": "display",
+    "title": "Content wrapper section of the contact page",
+    "description": "This hook displays new elements in the content wrapper of the contact page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayContactLeftColumn": {
+    "type": "display",
+    "title": "Left column blocks on the contact page",
+    "description": "This hook displays new elements in the left-hand column of the contact page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayContactRightColumn": {
+    "type": "display",
+    "title": "Right column blocks of the contact page",
+    "description": "This hook displays new elements in the right-hand column of the contact page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayContentWrapperBottom": {
+    "type": "display",
+    "title": "Content wrapper section (bottom)",
+    "description": "This hook displays new elements in the bottom of the content wrapper",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayContentWrapperTop": {
+    "type": "display",
+    "title": "Content wrapper section (top)",
+    "description": "This hook displays new elements in the top of the content wrapper",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCrossSellingShoppingCart": {
+    "type": "display",
+    "title": "displayCrossSellingShoppingCart",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCustomerAccount": {
+    "type": "display",
+    "title": "Customer account displayed in Front Office",
+    "description": "This hook displays new elements on the customer account page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCustomerAccountForm": {
+    "type": "display",
+    "title": "Customer account creation form",
+    "description": "This hook displays some information on the form to create a customer account",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayCustomerAccountFormTop": {
+    "type": "display",
+    "title": "Block above the form for create an account",
+    "description": "This hook is displayed above the customer''s account creation form",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayCustomerAccountTop": {
+    "type": "display",
+    "title": "Customer account displayed in Front Office (Top part)",
+    "description": "This hook displays new elements on the customer account page on Top",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCustomerLoginFormAfter": {
+    "type": "display",
+    "title": "Display elements after login form",
+    "description": "This hook displays new elements after the login form",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayCustomization": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayDashboardToolbarTopMenu": {
+    "type": "display",
+    "title": "Display new elements in back office page with a dashboard, on top Menu",
+    "description": "This hook launches modules when a page with a dashboard is displayed",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayDashboardTop": {
+    "type": "display",
+    "title": "Dashboard Top",
+    "description": "Displays the content in the dashboard''s top area",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayEmptyModuleCategoryExtraMessage": {
+    "type": "display",
+    "title": "Extra message to display for an empty modules category",
+    "description": "This hook allows to add an extra message to display in the Module manager page when a category doesn't have any module",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayExpressCheckout": {
+    "type": "display",
+    "title": "displayExpressCheckout",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayFooter": {
+    "type": "display",
+    "title": "Footer",
+    "description": "This hook displays new blocks in the footer",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayFooterAfter": {
+    "type": "display",
+    "title": "displayFooterAfter",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayFooterBefore": {
+    "type": "display",
+    "title": "displayFooterBefore",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayFooterCategory": {
+    "type": "display",
+    "title": "This hook adds new blocks under the products listing in a category/search",
+    "description": "This hook adds new blocks under the products listing in a category/search",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayFooterProduct": {
+    "type": "display",
+    "title": "Product footer",
+    "description": "This hook adds new blocks under the product's description",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayGDPRConsent": {
+    "type": "display",
+    "title": "displayGDPRConsent",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayHeader": {
+    "type": "display",
+    "title": "Pages html head section",
+    "description": "This hook adds additional elements in the head section of your pages (head section of html)",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayHeaderCategory": {
+    "type": "display",
+    "title": "Footer above of the product list",
+    "description": "This hook adds new blocks above the products listing in a category/search",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayHome": {
+    "type": "display",
+    "title": "Homepage content",
+    "description": "This hook displays new elements on the homepage",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayInvoiceLegalFreeText": {
+    "type": "display",
+    "title": "PDF Invoice - Legal Free Text",
+    "description": "This hook allows you to modify the legal free text on PDF invoices",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayLeftColumn": {
+    "type": "display",
+    "title": "New elements on a page (left column)",
+    "description": "This hook displays new elements in the left-hand column of a page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayLeftColumnProduct": {
+    "type": "display",
+    "title": "New elements on the product page (left column)",
+    "description": "This hook displays new elements in the left-hand column of the product page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayMaintenance": {
+    "type": "display",
+    "title": "Maintenance Page",
+    "description": "This hook displays new elements on the maintenance page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayModalContent": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayModuleConfigureExtraButons": {
+    "type": "display",
+    "title": "Module configuration - After toolbar buttons",
+    "description": "This hook allows to add toolbar's additional content on module configuration page",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayMyAccountBlock": {
+    "type": "display",
+    "title": "My account block",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayNav1": {
+    "type": "display",
+    "title": "displayNav1",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayNav2": {
+    "type": "display",
+    "title": "displayNav2",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayNavFullWidth": {
+    "type": "display",
+    "title": "Navigation",
+    "description": "This hook displays full width navigation menu at the top of your pages",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayNewsletterRegistration": {
+    "type": "display",
+    "title": "displayNewsletterRegistration",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayNotFound": {
+    "type": "display",
+    "title": "displayNotFound",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayOrderConfirmation": {
+    "type": "display",
+    "title": "Order confirmation page",
+    "description": "This hook is called within an order''s confirmation page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayOrderConfirmation1": {
+    "type": "display",
+    "title": "displayOrderConfirmation1",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayOrderConfirmation2": {
+    "type": "display",
+    "title": "displayOrderConfirmation2",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayOrderDetail": {
+    "type": "display",
+    "title": "Order detail",
+    "description": "This hook is displayed within the order's details in Front Office",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayOrderDetailProductLine": {
+    "type": "display",
+    "title": "Order detail product line",
+    "description": "This hook is displayed on each product line of the order''s details in Front Office",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayOrderPreview": {
+    "type": "display",
+    "title": "",
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "displayOverrideTemplate": {
+    "type": "display",
+    "title": "Change the default template of current controller",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayPaymentByBinaries": {
+    "type": "display",
+    "title": "Payment form generated by binaries",
+    "description": "This hook displays form generated by binaries during the checkout",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayPaymentReturn": {
+    "type": "display",
+    "title": "Payment return",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayPaymentTop": {
+    "type": "display",
+    "title": "Top of payment page",
+    "description": "This hook is displayed at the top of the payment page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayPersonalInformationTop": {
+    "type": "display",
+    "title": "Content in the checkout funnel, on top of the personal information panel",
+    "description": "Display actions or additional content in the personal details tab of the checkout funnel.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayProductActions": {
+    "type": "display",
+    "title": "Display additional action button on the product page",
+    "description": "This hook allow additional actions to be triggered, near the add to cart button.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayProductAdditionalInfo": {
+    "type": "display",
+    "title": "Product page additional info",
+    "description": "This hook adds additional information on the product page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayProductExtraContent": {
+    "type": "display",
+    "title": "Add content to the product page",
+    "description": "Adds new field / content to the FO product page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayProductListReviews": {
+    "type": "display",
+    "title": "displayProductListReviews",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayProductPriceBlock": {
+    "type": "display",
+    "title": "displayProductPriceBlock",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayReassurance": {
+    "type": "display",
+    "title": "displayReassurance",
+    "description": [],
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayRightColumn": {
+    "type": "display",
+    "title": "New elements on a page (right column)",
+    "description": "This hook displays new elements in the right-hand column of a page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayRightColumnProduct": {
+    "type": "display",
+    "title": "New elements on the product page (right column)",
+    "description": "This hook displays new elements in the right-hand column of the product page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displaySearch": {
+    "type": "display",
+    "title": [],
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayShoppingCart": {
+    "type": "display",
+    "title": "Shopping cart - Additional button",
+    "description": "This hook displays new action buttons within the shopping cart",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayShoppingCartFooter": {
+    "type": "display",
+    "title": "Shopping cart footer",
+    "description": "This hook displays some specific information on the shopping cart's page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displaySubcategories": {
+    "type": "display",
+    "title": "Display content in subcategory list",
+    "description": "This hooks allows you to display additional items in a list of subcategories in front office. Related blog posts, links to other categories, landing pages etc.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "displayTop": {
+    "type": "display",
+    "title": "Top of pages",
+    "description": "This hook displays additional elements at the top of your pages",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayWrapperBottom": {
+    "type": "display",
+    "title": "Main wrapper section (bottom)",
+    "description": "This hook displays new elements in the bottom of the main wrapper",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "displayWrapperTop": {
+    "type": "display",
+    "title": "Main wrapper section (top)",
+    "description": "This hook displays new elements in the top of the main wrapper",
+    "locations": [
+      "front office"
+    ],
+    "origin": "theme"
+  },
+  "filterCategoryContent": {
+    "type": "action",
+    "title": "Filter the content page category",
+    "description": "This hook is called just before fetching content page category",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "filterCmsCategoryContent": {
+    "type": "action",
+    "title": "Filter the content page category",
+    "description": "This hook is called just before fetching content page category",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "filterCmsContent": {
+    "type": "action",
+    "title": "Filter the content page",
+    "description": "This hook is called just before fetching content page",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "filterHtmlContent": {
+    "type": "action",
+    "title": "Filter HTML field before rending a page",
+    "description": "This hook is called just before fetching a page on HTML field",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "filterManufacturerContent": {
+    "type": "action",
+    "title": "Filter the content page manufacturer",
+    "description": "This hook is called just before fetching content page manufacturer",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "filterProductContent": {
+    "type": "action",
+    "title": "Filter the content page product",
+    "description": "This hook is called just before fetching content page product",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "filterProductSearch": {
+    "type": "action",
+    "title": "Filter search products result",
+    "description": "This hook is called in order to allow to modify search product result",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "filterSupplierContent": {
+    "type": "action",
+    "title": "Filter the content page supplier",
+    "description": "This hook is called just before fetching content page supplier",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "gSitemapAppendUrls": {
+    "type": "null",
+    "title": [],
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "module"
+  },
+  "legacyblockkpi": {
+    "type": "null",
+    "title": [],
+    "description": "",
+    "locations": [
+      "back office"
+    ],
+    "origin": "core"
+  },
+  "moduleRoutes": {
+    "type": "action",
+    "title": "",
+    "description": "This hook allows your module to extend default PrestaShop routes with custom ones and map them to your module front controllers.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "overrideImageLink": {
+    "type": "action",
+    "title": "Override product image link",
+    "description": "Allows to fully override the image URL returned by the getImageLink() method.",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "overrideLayoutTemplate": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "overrideMinimalPurchasePrice": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "productSearchProvider": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "sendMailAlterTemplateVars": {
+    "type": "action",
+    "title": "Alter template vars on the fly",
+    "description": "This hook is called when Mail::send() is called",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "termsAndConditions": {
+    "type": "action",
+    "title": "",
+    "description": "",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  },
+  "validateCustomerFormFields": {
+    "type": "action",
+    "title": "Customer registration form validation",
+    "description": "This hook is called to a module when it has sent additional fields with additionalCustomerFormFields",
+    "locations": [
+      "front office"
+    ],
+    "origin": "core"
+  }
+}

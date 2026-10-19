@@ -1,0 +1,26 @@
+{
+  "name": "genisoft-prestashop-ai-harness",
+  "version": "1.0.0",
+  "description": "Autonomous PrestaShop 8+ Module Engineering & AppSec Harness for AI Coding Agents",
+  "main": "tools/ps-smarty-guard.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "test:smarty": "node tools/ps-smarty-guard.js examples/genisoft_cartthreshold/views/templates/hook/"
+  },
+  "keywords": [
+    "prestashop",
+    "prestashop-8",
+    "ai-agents",
+    "harness-engineering",
+    "claude-code",
+    "smarty",
+    "appsec"
+  ],
+  "author": "Lefi Abdelmonem <contact@genisoft.fr>",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.0.0"
+  }
+}
