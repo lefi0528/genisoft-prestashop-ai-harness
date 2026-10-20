@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="genisoft_cartthreshold" source-language="en-US" target-language="fr-FR" datatype="plaintext">
+    <body>
+      <trans-unit id="d81f8d1933a77e5fe3f7d4d7e9483195">
+        <source>Genisoft Cart Threshold Progression</source>
+        <target>Genisoft - Barre de livraison gratuite</target>
+      </trans-unit>
+      <trans-unit id="79b297f329f5ba5fbf43b8fa905f48d8">
+        <source>Shows customers how much more to spend before PrestaShop offers free shipping.</source>
+        <target>Indique aux clients combien il leur reste à ajouter avant que PrestaShop offre la livraison.</target>
+      </trans-unit>
+      <trans-unit id="d6a2f1d217838f87aa7275b53b19e962">
+        <source>Could not register the hooks or save the settings.</source>
+        <target>Impossible d'enregistrer les hooks ou les réglages du module.</target>
+      </trans-unit>
+      <trans-unit id="f3ff3a0e14911f5ba61541dc1912c31f">
+        <source>Free shipping by order amount is off ("Free shipping starts at" is 0), so the bar is hidden. Enter an amount below to turn it on.</source>
+        <target>La livraison gratuite selon le montant de la commande est désactivée (« Livraison gratuite à partir de » vaut 0) : la barre est masquée. Saisissez un montant ci-dessous pour l'activer.</target>
+      </trans-unit>
+      <trans-unit id="cc8a89b4f06152b37ec3806fd68ffd69">
+        <source>Enter an amount greater than zero, for example 49.90 or 49,90.</source>
+        <target>Saisissez un montant supérieur à zéro, par exemple 49,90 ou 49.90.</target>
+      </trans-unit>
+      <trans-unit id="8dd2f915acf4ec98006d11c9a4b0945b">
+        <source>Settings updated successfully.</source>
+        <target>Réglages enregistrés.</target>
+      </trans-unit>
+      <trans-unit id="5497e41b79866fe2261dbd2ab928358e">
+        <source>Free shipping bar</source>
+        <target>Barre de livraison gratuite</target>
+      </trans-unit>
+      <trans-unit id="8d2e52e4fefdd9bd21a69285be9e181c">
+        <source>Show the bar</source>
+        <target>Afficher la barre</target>
+      </trans-unit>
+      <trans-unit id="00d23a76e43b46dae9ec7aa9dcbebb32">
+        <source>Enabled</source>
+        <target>Activée</target>
+      </trans-unit>
+      <trans-unit id="b9f5c797ebbf55adccdd8539a65a0241">
+        <source>Disabled</source>
+        <target>Désactivée</target>
+      </trans-unit>
+      <trans-unit id="c9722f74f95451816de0f8ca3259ae44">
+        <source>Free shipping starts at</source>
+        <target>Livraison gratuite à partir de</target>
+      </trans-unit>
+      <trans-unit id="684fb4b08ea35ed21659e94df4df21b9">
+        <source>PrestaShop setting, also in Shipping &gt; Preferences. Once the cart reaches this amount (tax incl., discounts deducted, shipping excluded), PrestaShop makes shipping free; the bar counts down to it. Saving it here changes it there.</source>
+        <target>Réglage de PrestaShop, également dans Livraison &gt; Préférences. Dès que le panier atteint ce montant (TTC, réductions déduites, hors frais de port), PrestaShop offre la livraison ; la barre indique ce qu'il reste à ajouter. L'enregistrer ici le modifie aussi là-bas.</target>
+      </trans-unit>
+      <trans-unit id="c9cc8cce247e49bae79f15173ce97354">
+        <source>Save</source>
+        <target>Enregistrer</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="genisoft_cartthreshold" source-language="en-US" target-language="fr-FR" datatype="plaintext">
+    <body>
+      <trans-unit id="6d32f74c8234165457640bd2f558a6cd">
+        <source>Congratulations! You unlocked free shipping.</source>
+        <target>Félicitations ! La livraison vous est offerte.</target>
+      </trans-unit>
+      <trans-unit id="e8070d9904897a467287d88c0fe7cf86">
+        <source>Add %s more to unlock free shipping!</source>
+        <target>Plus que %s pour profiter de la livraison gratuite !</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
