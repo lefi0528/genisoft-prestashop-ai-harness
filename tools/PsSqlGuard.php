@@ -11,6 +11,15 @@ namespace Genisoft\PrestashopHarness\Tools;
  */
 class PsSqlGuard
 {
+    /** Values read from the HTTP request: Tools::getValue('key'), Tools::getAllValues(), $_GET/$_POST/$_REQUEST/$_COOKIE['key']. */
+    private const REQUEST_VALUE = '/\\\\?Tools::(getValue|getAllValues)\s*\(\s*(\'[^\']*\'|"[^"]*")?|\$_(GET|POST|REQUEST|COOKIE)\b(?:\s*\[\s*(\'[^\']*\'|"[^"]*"))?/i';
+
+    /** A wrapper that makes the wrapped value safe in SQL, as the text right before that value. */
+    private const ESCAPING_WRAPPER = '/(?:\(\s*(?:int|float)\s*\)|\b(?:pSQL|bqSQL|intval|floatval)\s*\(|->\s*escape\s*\()$/i';
+
+    /** Any other wrapper (string cast, @, function or method call), as the text right before the wrapped value. */
+    private const OTHER_WRAPPER = '/(?:\(\s*string\s*\)|@|(?:\$\w+(?:\s*->\s*\w+)*\s*->\s*|\\\\?[A-Za-z_][\w\\\\]*\s*::\s*)?\\\\?[A-Za-z_][\w\\\\]*\s*\()$/i';
+
     public function validateFile(string $filePath): array
     {
         if (!file_exists($filePath)) {
@@ -31,10 +40,12 @@ class PsSqlGuard
             }
         }
 
-        // 2. Analyze Db::getInstance()->(execute|executeS|getValue|getRow) calls
-        if (preg_match_all('/Db::getInstance\(\)->(execute|executeS|getValue|getRow)\s*\(\s*(.*?)\s*\)/is', $code, $matches)) {
-            foreach ($matches[2] as $queryArg) {
-                $queryArgTrim = trim($queryArg);
+        // 2. Analyze Db::getInstance([...])->(execute|executeS|getValue|getRow) calls. The arguments run to the
+        // matching closing parenthesis (quoted strings skipped); if the parentheses do not balance, to the first ')'.
+        $balancedArgs = '(?<args>(?:[^()\'"]++|\'(?:[^\'\\\\]|\\\\.)*+\'|"(?:[^"\\\\]|\\\\.)*+"|\((?&args)\))*+)';
+        if (preg_match_all('/Db::getInstance\([^()]*\)->(execute|executeS|getValue|getRow)\s*\(\s*(?:' . $balancedArgs . '\)|(?<firstParen>.*?)\s*\))/is', $code, $matches, PREG_SET_ORDER)) {
+            foreach ($matches as $match) {
+                $queryArgTrim = trim(($match['args'] ?? '') !== '' ? $match['args'] : ($match['firstParen'] ?? ''));
                 // Case A: Query passed directly as expression
                 if (str_starts_with($queryArgTrim, "'") || str_starts_with($queryArgTrim, '"')) {
                     $subIssues = $this->analyzeQueryExpression($queryArgTrim);
@@ -100,8 +111,8 @@ class PsSqlGuard
                 $varName = $match[0];
                 $offset = $match[1];
                 
-                // Exclude constants or PrestaShop globals
-                if (in_array($varName, ['this', '_DB_PREFIX_', '_MYSQL_ENGINE_'])) {
+                // Exclude constants or PrestaShop globals; request superglobals are checked as request values below
+                if (in_array($varName, ['this', '_DB_PREFIX_', '_MYSQL_ENGINE_', '_GET', '_POST', '_REQUEST', '_COOKIE'])) {
                     continue;
                 }
 
@@ -125,7 +136,45 @@ class PsSqlGuard
             }
         }
 
+        // Request values concatenated without escaping, e.g. ' WHERE ref = \'' . Tools::getValue('ref') . '\''
+        if (preg_match_all(self::REQUEST_VALUE, $expr, $requestMatches, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
+            foreach ($requestMatches as $match) {
+                if (!$this->isUnescapedConcatOperand(substr($expr, 0, $match[0][1]))) {
+                    continue;
+                }
+
+                $key = $match[2][0] ?? '';
+                $source = ($match[1][0] ?? '') !== ''
+                    ? 'Tools::' . $match[1][0] . '(' . $key . ')'
+                    : '$_' . strtoupper($match[3][0]) . (isset($match[4]) && $match[4][1] >= 0 ? '[' . $match[4][0] . ']' : '');
+                $issues[] = [
+                    'severity' => 'ERROR',
+                    'category' => 'SQL_UNESCAPED_CONCAT',
+                    'message' => "Request value {$source} concatenated in SQL query. Wrap it in (int), (float) or pSQL() where it is concatenated."
+                ];
+            }
+        }
+
         return $issues;
+    }
+
+    /**
+     * Walks back from a request value through the calls wrapping it (trim(, (string), $obj->clean( ...).
+     * True when that chain starts right after a concatenation dot and holds no escaping wrapper.
+     * A value passed as a later argument (implode(',', ...)) or used as a condition is not followed.
+     */
+    private function isUnescapedConcatOperand(string $before): bool
+    {
+        while (true) {
+            $before = rtrim($before);
+            if (preg_match(self::ESCAPING_WRAPPER, $before)) {
+                return false;
+            }
+            if (!preg_match(self::OTHER_WRAPPER, $before, $wrapper)) {
+                return (bool) preg_match('/(?<!\.)\.$/', $before);
+            }
+            $before = substr($before, 0, -strlen($wrapper[0]));
+        }
     }
 
     private function deduplicateIssues(array $issues): array

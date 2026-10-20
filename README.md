@@ -59,7 +59,7 @@ The **Genisoft PrestaShop AI Harness** provides an automated, deterministic firs
 | Tool | Language | Purpose & Enforcement |
 | :--- | :--- | :--- |
 | **`tools/PsHookGuard.php`** (`ps-hook-guard.php`) | PHP 8.1+ (PSR-4) | Checks `registerHook()` calls and `hook<Name>()` methods against the 669 hook names of `data/ps-hooks-reference.json`, flags WordPress functions, and suggests the closest hook name (Levenshtein distance). |
-| **`tools/PsSqlGuard.php`** (`ps-sql-guard.php`) | PHP 8.1+ (PSR-4) | Regex-based scanner: flags `$variables` concatenated into SQL without `(int)`, `(float)` or `pSQL()` at the concatenation point, variables interpolated in double-quoted SQL, and table names without `_DB_PREFIX_`. |
+| **`tools/PsSqlGuard.php`** (`ps-sql-guard.php`) | PHP 8.1+ (PSR-4) | Regex-based scanner: flags `$variables` and request values (`Tools::getValue()`, `Tools::getAllValues()`, `$_GET`, `$_POST`, `$_REQUEST`, `$_COOKIE`) concatenated into SQL without `(int)`, `(float)` or `pSQL()` at the concatenation point, variables interpolated in double-quoted SQL, and table names without `_DB_PREFIX_`. |
 | **`tools/ps-smarty-guard.js`** | Node.js | Regex-based Smarty linter flagging unescaped `{$variables}`, `nofilter`, `{php}` blocks, and `{l}` strings without a translation domain (`d='Modules...'`). |
 | **`tools/PsContextGuard.php`** (`ps-context-guard.php`) | PHP 8.1+ (PSR-4) | Flags `product_shop` / `category_shop` joins in files with no `id_shop =` condition, `Context::getContext()` inside loops, and 2-argument `Configuration::updateValue()` calls (info). |
 | **`tools/harness-auditor.php`** (`audit-harness.sh`) | PHP 8.1+ | Module auditor: `php tools/harness-auditor.php <module-dir>` self-tests the guards on known snippets, then runs the 4 guards, `php -l` and packaging checks (main file, `logo.png`, `index.php` in each folder) on the module. |
@@ -139,9 +139,11 @@ bash tests/fixtures.sh
 
 ## ⚠️ Limitations
 
-- The guards match **regular expressions** on the source text. There is no PHP parser and no data-flow analysis.
-- **False negatives**: a value concatenated straight from a call, such as `' WHERE ref = ' . Tools::getValue('ref')`, is not flagged. A clean run is not proof that a module is free of SQL injection or XSS.
-- **False positives**: a variable cast earlier (`$id = (int) $id;`) and concatenated later is still flagged; SQL keywords in comments can trigger `SQL_MISSING_DB_PREFIX` warnings.
+- The guards match **regular expressions** on the source text. There is no PHP parser and no data-flow analysis. A clean run is not proof that a module is free of SQL injection or XSS.
+- **Where the SQL guard looks**: the arguments of `Db::getInstance()->execute()`, `executeS()`, `getValue()` and `getRow()` (also with `Db::getInstance(_PS_USE_SQL_SLAVE_)`), the assignments to a variable passed to those calls, and `$…sql…` assignments that contain `SELECT`, `INSERT`, `UPDATE` or `DELETE`. SQL built anywhere else is not checked: `DbQuery` methods such as `->where()`, the conditions of `Db::getInstance()->update()` / `delete()`, or a query written inline in `$db->executeS('…')` on a stored instance.
+- **Request values** (`Tools::getValue()`, `Tools::getAllValues()`, `$_GET`, `$_POST`, `$_REQUEST`, `$_COOKIE`) are flagged when they follow the `.` operator, directly (`' WHERE ref = \'' . Tools::getValue('ref') . '\''`) or inside other calls (`. trim(Tools::getValue('ref'))`), unless `(int)`, `(float)`, `intval()`, `floatval()`, `pSQL()`, `bqSQL()` or `Db::getInstance()->escape()` wraps them there. **Not flagged**: a request value passed as a later argument (`implode(',', Tools::getValue('ids'))`) or placed first in a concatenation (`Tools::getValue('way') . ' DESC'`, `$sql .= Tools::getValue('way');`).
+- An accepted wrapper is not checked against the SQL around it: `' WHERE id = ' . pSQL(Tools::getValue('id'))` passes, although a value outside quotes stays injectable after `pSQL()`; use `(int)` there.
+- **False positives**: a variable cast earlier (`$id = (int) $id;`) and concatenated later is still flagged, and so is `. $db->escape($value)` (reported as the variable `$db`); SQL keywords in comments can trigger `SQL_MISSING_DB_PREFIX` warnings.
 - The multi-shop check works per file: one `id_shop =` condition anywhere in the file satisfies every `_shop` join in it.
 - Passing the harness says nothing about runtime compatibility: install and test the module on each PrestaShop version it declares.
 

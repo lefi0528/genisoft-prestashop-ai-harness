@@ -36,10 +36,11 @@ PrestaShop defines several hundred hooks across front-office, back-office, and c
 ### 2. SQL AppSec Engine (`tools/ps-sql-guard.php`)
 PrestaShop does not use an ORM for module data access by default. Raw SQL queries through `Db::getInstance()` require rigorous parameter handling. The SQL AppSec Engine (regular expressions, no data-flow tracking) flags:
 - `$variables` concatenated into SQL without `pSQL()`, `(int)` or `(float)` at the concatenation point.
+- Request values (`Tools::getValue()`, `Tools::getAllValues()`, `$_GET`, `$_POST`, `$_REQUEST`, `$_COOKIE`) concatenated into SQL, directly or inside other calls such as `trim()`, without `(int)`, `(float)`, `intval()`, `floatval()`, `pSQL()`, `bqSQL()` or `Db::getInstance()->escape()` around them.
 - Variables interpolated in double-quoted SQL strings.
 - Table references lacking the `_DB_PREFIX_` constant.
 
-Values concatenated straight from a call such as `Tools::getValue()` are not flagged, so a clean run is not proof of the absence of SQL injection.
+It only reads SQL passed to `Db::getInstance()->execute()`, `executeS()`, `getValue()` or `getRow()` and `$...sql...` assignments, so SQL built with `DbQuery` or in `update()` / `delete()` conditions is not checked, and a clean run is not proof of the absence of SQL injection. The README Limitations section lists the exact cases.
 
 ### 3. Smarty Template Guard (`tools/ps-smarty-guard.js`)
 Smarty 3/4 compiles `.tpl` files into native PHP scripts. Unescaped variable interpolation is the primary source of reflected and stored Cross-Site Scripting (XSS) in e-commerce stores. The Smarty Guard (regular expressions) flags templates that break these rules:
