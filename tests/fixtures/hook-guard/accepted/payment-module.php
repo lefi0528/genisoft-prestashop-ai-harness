@@ -25,5 +25,6 @@ class FixturePaymentModule extends PaymentModule
 
     public function hookActionPaymentConfirmation($params)
     {
+        // Empty on purpose: the hook guard only reads the method name.
     }
 }

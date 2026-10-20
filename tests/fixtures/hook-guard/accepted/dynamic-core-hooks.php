@@ -31,9 +31,11 @@ class FixtureDynamicHooks extends Module
 
     public function hookActionObjectProductUpdateAfter($params)
     {
+        // Empty on purpose: the hook guard only reads the method name.
     }
 
     public function hookActionFixtureBannerGridDefinitionModifier($params)
     {
+        // Empty on purpose: the hook guard only reads the method name.
     }
 }

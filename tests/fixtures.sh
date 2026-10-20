@@ -41,11 +41,13 @@ expect_lines() {
         sed 's/^/     | /' "$out"
         failures=$((failures + 1))
     fi
+    return 0
 }
 
 # expect_findings <count> <text> <command...>: exit 1 with exactly <count> output lines containing <text>.
 expect_findings() {
     expect_lines 1 "$@"
+    return 0
 }
 
 echo "--> Starters: the guards must catch the planted defects"

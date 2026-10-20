@@ -102,17 +102,7 @@ final class GuardRunner
 
         $counts = ['blocking' => 0, 'other' => 0];
         foreach ($files as $file) {
-            $issues = $guard->validateFile($file);
-            if ($issues === []) {
-                continue;
-            }
-            echo "File: {$file}\n";
-            foreach ($issues as $issue) {
-                $line = isset($issue['line']) ? "line {$issue['line']}: " : '';
-                echo "  {$line}[{$issue['severity']}] [{$issue['category']}] {$issue['message']}\n";
-                $counts[self::isBlocking($issue) ? 'blocking' : 'other']++;
-            }
-            echo "\n";
+            self::printIssues($file, $guard->validateFile($file), $counts);
         }
 
         $summary = "{$counts['blocking']} blocking (ERROR/CRITICAL), {$counts['other']} non-blocking (WARNING/INFO) finding(s) in " . count($files) . ' file(s).';
@@ -122,5 +112,23 @@ final class GuardRunner
         }
         echo "PASSED: {$summary} Pattern-based checks only; this is not a proof of absence of vulnerabilities.\n";
         return self::EXIT_CLEAN;
+    }
+
+    /**
+     * @param list<array{severity: string, category: string, message: string, line?: int}> $issues
+     * @param array{blocking: int, other: int} $counts updated with the issues printed
+     */
+    private static function printIssues(string $file, array $issues, array &$counts): void
+    {
+        if ($issues === []) {
+            return;
+        }
+        echo "File: {$file}\n";
+        foreach ($issues as $issue) {
+            $line = isset($issue['line']) ? "line {$issue['line']}: " : '';
+            echo "  {$line}[{$issue['severity']}] [{$issue['category']}] {$issue['message']}\n";
+            $counts[self::isBlocking($issue) ? 'blocking' : 'other']++;
+        }
+        echo "\n";
     }
 }

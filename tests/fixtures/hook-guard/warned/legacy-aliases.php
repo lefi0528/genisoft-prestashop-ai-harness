@@ -15,5 +15,6 @@ class FixtureLegacyAliases extends Module
 
     public function hookHeader($params)
     {
+        // Empty on purpose: the hook guard only reads the method name.
     }
 }

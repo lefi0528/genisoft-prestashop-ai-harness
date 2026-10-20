@@ -32,9 +32,11 @@ class FixtureWordPressWords extends Module
 
     protected function admin_init()
     {
+        // Empty on purpose: the hook guard only reads the method name.
     }
 
     protected function save_post()
     {
+        // Empty on purpose: the hook guard only reads the method name.
     }
 }

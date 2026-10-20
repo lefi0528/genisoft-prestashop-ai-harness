@@ -188,10 +188,8 @@ class PsHookGuard
                 : $issue('WARNING', 'HOOK_ALIAS', "'{$hookName}' is a legacy alias of '{$modern}' (ps_hook_alias). PrestaShop still maps it; register '{$modern}' instead.");
         }
 
-        foreach (self::DYNAMIC_HOOKS as $pattern) {
-            if (preg_match($pattern, $hookName)) {
-                return null;
-            }
+        if (self::isRuntimeHookName($hookName)) {
+            return null;
         }
 
         if (in_array($lower, self::WP_HOOK_NAMES, true) || self::hasWpPrefix($lower)) {
@@ -204,20 +202,37 @@ class PsHookGuard
             return $issue('WARNING', 'CUSTOM_HOOK', "'{$hookName}' is not a PrestaShop core hook, but this module executes it itself (Hook::exec or {hook h=...}): treated as the module's own hook. Check that the name is intended.");
         }
 
+        $closest = $this->closestHook($lower);
+        $suggestion = $closest !== null ? " Did you mean '{$closest}'?" : '';
+
+        return $issue('ERROR', 'HALLUCINATED_HOOK', ($isMethod
+            ? "Method {$method} implements an unknown or hallucinated hook '{$hookName}'."
+            : "Unknown or hallucinated hook '{$hookName}'.") . $suggestion);
+    }
+
+    private static function isRuntimeHookName(string $hookName): bool
+    {
+        foreach (self::DYNAMIC_HOOKS as $pattern) {
+            if (preg_match($pattern, $hookName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** The catalog hook nearest to $lowerName (Levenshtein distance up to 4), if any. */
+    private function closestHook(string $lowerName): ?string
+    {
         $closest = null;
         $shortest = 4;
         foreach ($this->hooks as $official) {
-            $dist = levenshtein($lower, strtolower($official));
+            $dist = levenshtein($lowerName, strtolower($official));
             if ($dist <= $shortest) {
                 $closest = $official;
                 $shortest = $dist;
             }
         }
-        $suggestion = $closest ? " Did you mean '{$closest}'?" : '';
-
-        return $issue('ERROR', 'HALLUCINATED_HOOK', ($isMethod
-            ? "Method {$method} implements an unknown or hallucinated hook '{$hookName}'."
-            : "Unknown or hallucinated hook '{$hookName}'.") . $suggestion);
+        return $closest;
     }
 
     private static function hasWpPrefix(string $lowerName): bool
@@ -309,22 +324,35 @@ class PsHookGuard
      */
     private function parse(string $code): void
     {
-        $this->t = [];
+        $this->t = self::tokenize($code);
+        $this->functions = $this->classes = $this->loops = $this->variables = $this->constants = $this->properties = $this->visiting = [];
+        $this->indexStructures();
+        $this->indexAssignments();
+    }
+
+    /** @return list<array{0: int|string, 1: string, 2: int}> the tokens without whitespace and comments; ?> becomes ';' */
+    private static function tokenize(string $code): array
+    {
+        $tokens = [];
         $line = 1;
         foreach (token_get_all($code) as $tok) {
-            if (is_array($tok)) {
-                if ($tok[0] === T_CLOSE_TAG) {
-                    $this->t[] = [';', ';', $tok[2]];
-                } elseif (!in_array($tok[0], [T_WHITESPACE, T_COMMENT, T_DOC_COMMENT, T_OPEN_TAG, T_OPEN_TAG_WITH_ECHO, T_INLINE_HTML], true)) {
-                    $this->t[] = $tok;
-                }
-                $line = $tok[2] + substr_count($tok[1], "\n");
-            } else {
-                $this->t[] = [$tok, $tok, $line];
+            if (!is_array($tok)) {
+                $tokens[] = [$tok, $tok, $line];
+                continue;
             }
+            if ($tok[0] === T_CLOSE_TAG) {
+                $tokens[] = [';', ';', $tok[2]];
+            } elseif (!in_array($tok[0], [T_WHITESPACE, T_COMMENT, T_DOC_COMMENT, T_OPEN_TAG, T_OPEN_TAG_WITH_ECHO, T_INLINE_HTML], true)) {
+                $tokens[] = $tok;
+            }
+            $line = $tok[2] + substr_count($tok[1], "\n");
         }
-        $this->functions = $this->classes = $this->loops = $this->variables = $this->constants = $this->properties = $this->visiting = [];
+        return $tokens;
+    }
 
+    /** Functions, classes and foreach loops. */
+    private function indexStructures(): void
+    {
         $count = count($this->t);
         for ($i = 0; $i < $count; $i++) {
             $id = $this->t[$i][0];
@@ -339,6 +367,12 @@ class PsHookGuard
                 $this->indexLoop($i);
             }
         }
+    }
+
+    /** Assignments that can hold hook names: variables, class constants and properties. Needs indexStructures(). */
+    private function indexAssignments(): void
+    {
+        $count = count($this->t);
         for ($i = 0; $i < $count; $i++) {
             $tok = $this->t[$i];
             if ($tok[0] === T_CONST) {
@@ -362,16 +396,12 @@ class PsHookGuard
         $paren = $name === null ? $j : $j + 1;
         $params = [$paren, $this->close($paren)];
         // Skip a closure's use (...) and the return type, up to the body (or ';' for an abstract method).
-        for ($k = $params[1] + 1; $k < count($this->t); $k++) {
-            if ($this->is($k, ';')) {
-                return;
-            }
-            if ($this->is($k, '(')) {
-                $k = $this->close($k);
-            } elseif ($this->is($k, '{')) {
-                $this->functions[] = ['name' => $name, 'line' => $this->t[$i][2], 'params' => $params, 'start' => $k, 'end' => $this->close($k)];
-                return;
-            }
+        $k = $params[1] + 1;
+        while ($k < count($this->t) && !$this->is($k, ';') && !$this->is($k, '{')) {
+            $k = $this->is($k, '(') ? $this->close($k) + 1 : $k + 1;
+        }
+        if ($this->is($k, '{')) {
+            $this->functions[] = ['name' => $name, 'line' => $this->t[$i][2], 'params' => $params, 'start' => $k, 'end' => $this->close($k)];
         }
     }
 
@@ -381,52 +411,60 @@ class PsHookGuard
             return;
         }
         $close = $this->close($i + 1);
-        $as = null;
-        $depth = 0;
-        for ($k = $i + 2; $k < $close && $as === null; $k++) {
-            $depth += $this->depthChange($k);
-            if ($depth === 0 && $this->is($k, T_AS)) {
-                $as = $k;
-            }
-        }
+        $as = $this->topLevel($i + 2, $close, T_AS);
         if ($as === null) {
             return;
         }
         $vars = [];
-        $hasKey = false;
         for ($k = $as + 1; $k < $close; $k++) {
             if ($this->is($k, T_VARIABLE)) {
                 $vars[] = $this->t[$k][1];
             }
-            $hasKey = $hasKey || $this->is($k, T_DOUBLE_ARROW);
         }
+        $hasKey = $this->topLevel($as + 1, $close, T_DOUBLE_ARROW) !== null && count($vars) >= 2;
 
-        $body = $close + 1;
-        if ($this->is($body, '{')) {
-            $end = $this->close($body);
-        } elseif ($this->is($body, ':')) {
-            $end = count($this->t) - 1;
-            for ($k = $body; $k < count($this->t); $k++) {
-                if ($this->is($k, T_ENDFOREACH)) {
-                    $end = $k;
-                    break;
-                }
-            }
-        } else {
-            $end = $this->statementEnd($body);
-        }
         $this->loops[] = [
             'value' => $vars === [] ? null : end($vars),
-            'key' => $hasKey && count($vars) >= 2 ? $vars[0] : null,
+            'key' => $hasKey ? $vars[0] : null,
             'expr' => [$i + 2, $as],
-            'start' => $body,
-            'end' => $end,
+            'start' => $close + 1,
+            'end' => $this->loopEnd($close + 1),
         ];
+    }
+
+    /** Last token of a loop body: braces, `: ... endforeach;` or a single statement. */
+    private function loopEnd(int $body): int
+    {
+        if ($this->is($body, '{')) {
+            return $this->close($body);
+        }
+        if (!$this->is($body, ':')) {
+            return $this->statementEnd($body);
+        }
+        for ($k = $body; $k < count($this->t); $k++) {
+            if ($this->is($k, T_ENDFOREACH)) {
+                return $k;
+            }
+        }
+        return count($this->t) - 1;
+    }
+
+    /** First index in [$start, $end) holding $id outside nested brackets. */
+    private function topLevel(int $start, int $end, int|string $id): ?int
+    {
+        $depth = 0;
+        for ($k = $start; $k < $end; $k++) {
+            $depth += $this->depthChange($k);
+            if ($depth === 0 && $this->is($k, $id)) {
+                return $k;
+            }
+        }
+        return null;
     }
 
     private function indexConstants(int $i): void
     {
-        // const A = [...], B = '...';  (PHP 8.3 allows a type between `const` and the name)
+        // Several constants can share one statement, and PHP 8.3 allows a type before each name.
         $k = $i + 1;
         while ($k < count($this->t) && !$this->is($k, ';')) {
             if ($this->is($k, T_STRING) && $this->is($k + 1, '=')) {
@@ -470,64 +508,91 @@ class PsHookGuard
      */
     private function resolve(int $start, int $end): array
     {
-        $values = [];
-        $keys = [];
+        $result = ['values' => [], 'keys' => []];
         $stack = [];   // kind of each open bracket: 'array' (literal), 'pass' (array_merge(...)) or 'other'
-        for ($i = $start; $i < $end; $i++) {
-            $tok = $this->t[$i];
-            if ($tok[0] === '(' || $tok[0] === '[') {
-                $stack[] = $this->bracketKind($i);
-                continue;
-            }
-            if ($tok[0] === ')' || $tok[0] === ']') {
-                array_pop($stack);
-                continue;
-            }
+        $i = $start;
+        while ($i < $end) {
+            $id = $this->t[$i][0];
             $kind = $stack === [] ? 'array' : end($stack);
-            if ($tok[0] === T_CONSTANT_ENCAPSED_STRING) {
-                $value = substr($tok[1], 1, -1);
-                if ($kind === 'array' && preg_match('/^[A-Za-z_]\w*$/', $value) && !$this->is($i - 1, '.') && !$this->is($i + 1, '.')) {
-                    if (!$this->is($i + 1, T_DOUBLE_ARROW)) {
-                        $values[] = $value;
-                    } elseif (count(array_keys($stack, 'array', true)) <= 1) {
-                        $keys[] = $value;   // keys of nested arrays are settings, not hook names
-                    }
-                }
-                continue;
-            }
-            if ($kind === 'other') {
-                continue;
-            }
-            $found = null;
             $last = $i;
-            if ($tok[0] === T_VARIABLE && $tok[1] !== '$this') {
-                if (!$this->is($i + 1, '[') && !$this->isObjectOperator($i + 1) && !$this->is($i + 1, '=')) {
-                    $found = $this->resolveVariable($tok[1], $i);
+            if ($id === '(' || $id === '[') {
+                $stack[] = $this->bracketKind($i);
+            } elseif ($id === ')' || $id === ']') {
+                array_pop($stack);
+            } elseif ($id === T_CONSTANT_ENCAPSED_STRING) {
+                if ($kind === 'array') {
+                    $result = self::merge($result, $this->literal($i, count(array_keys($stack, 'array', true)) <= 1));
                 }
-            } elseif ($tok[0] === T_VARIABLE && $this->isObjectOperator($i + 1) && $this->is($i + 2, T_STRING)) {
-                $member = $this->t[$i + 2][1];
-                $last = $this->is($i + 3, '(') ? $this->close($i + 3) : $i + 2;
-                $found = $this->is($i + 3, '(') ? $this->resolveMethod($member) : $this->resolveProperty($member);
-            } elseif (in_array($tok[0], [T_STRING, T_STATIC, T_NAME_FULLY_QUALIFIED, T_NAME_QUALIFIED], true) && $this->is($i + 1, T_DOUBLE_COLON) && isset($this->t[$i + 2])) {
-                $member = $this->t[$i + 2];
-                $last = $this->is($i + 3, '(') ? $this->close($i + 3) : $i + 2;
-                if ($member[0] === T_VARIABLE) {
-                    $found = $this->resolveProperty(substr($member[1], 1));
-                } elseif ($member[0] === T_STRING && $this->is($i + 3, '(')) {
-                    $found = $this->resolveMethod($member[1]);
-                } elseif ($member[0] === T_STRING && isset($this->constants[$member[1]])) {
-                    $found = $this->resolveOnce('const:' . $member[1], $this->constants[$member[1]]);
+            } elseif ($kind !== 'other') {
+                [$found, $last] = $this->reference($i);
+                // A reference concatenated with something else ($this->name . 'Banner') builds a name at runtime.
+                if ($found !== null && !$this->is($i - 1, '.') && !$this->is($last + 1, '.')) {
+                    $result = self::merge($result, $found);
                 }
             }
-            // A reference concatenated with something else ($this->name . 'Banner') builds a name at runtime.
-            if ($found !== null && !$this->is($i - 1, '.') && !$this->is($last + 1, '.')) {
-                $values = array_merge($values, $found['values']);
-                $keys = array_merge($keys, $found['keys']);
-            }
-            $i = $last;
+            $i = $last + 1;
         }
 
-        return ['values' => $values, 'keys' => $keys];
+        return $result;
+    }
+
+    /**
+     * The string literal at $i as a hook name: a value, or a key when $topLevelKey (keys of nested arrays
+     * are settings, not hook names). Concatenated strings and non-identifiers are ignored.
+     *
+     * @return array{values: string[], keys: string[]}
+     */
+    private function literal(int $i, bool $topLevelKey): array
+    {
+        $value = substr($this->t[$i][1], 1, -1);
+        if (!preg_match('/^[A-Za-z_]\w*$/', $value) || $this->is($i - 1, '.') || $this->is($i + 1, '.')) {
+            return ['values' => [], 'keys' => []];
+        }
+        if (!$this->is($i + 1, T_DOUBLE_ARROW)) {
+            return ['values' => [$value], 'keys' => []];
+        }
+        return ['values' => [], 'keys' => $topLevelKey ? [$value] : []];
+    }
+
+    /**
+     * The variable, $this->member, Class::member or method call starting at $i.
+     *
+     * @return array{0: ?array{values: string[], keys: string[]}, 1: int} what it holds (null if unknown) and its last token
+     */
+    private function reference(int $i): array
+    {
+        $tok = $this->t[$i];
+        if ($tok[0] === T_VARIABLE && $tok[1] !== '$this') {
+            $plain = !$this->is($i + 1, '[') && !$this->isObjectOperator($i + 1) && !$this->is($i + 1, '=');
+            return [$plain ? $this->resolveVariable($tok[1], $i) : null, $i];
+        }
+        $isMember = $tok[0] === T_VARIABLE && $this->isObjectOperator($i + 1) && $this->is($i + 2, T_STRING);
+        $isStatic = in_array($tok[0], [T_STRING, T_STATIC, T_NAME_FULLY_QUALIFIED, T_NAME_QUALIFIED], true)
+            && $this->is($i + 1, T_DOUBLE_COLON) && isset($this->t[$i + 2]);
+        if (!$isMember && !$isStatic) {
+            return [null, $i];
+        }
+        $member = $this->t[$i + 2];
+        $call = $this->is($i + 3, '(');
+        $last = $call ? $this->close($i + 3) : $i + 2;
+        if ($call) {
+            return [$this->resolveMethod($member[1]), $last];
+        }
+        if ($isMember || $member[0] === T_VARIABLE) {
+            return [$this->resolveProperty(ltrim($member[1], '$')), $last];
+        }
+        $constant = $this->constants[$member[1]] ?? null;
+        return [$constant !== null ? $this->resolveOnce('const:' . $member[1], $constant) : null, $last];
+    }
+
+    /**
+     * @param array{values: string[], keys: string[]} $a
+     * @param array{values: string[], keys: string[]} $b
+     * @return array{values: string[], keys: string[]}
+     */
+    private static function merge(array $a, array $b): array
+    {
+        return ['values' => array_merge($a['values'], $b['values']), 'keys' => array_merge($a['keys'], $b['keys'])];
     }
 
     /** @return array{values: string[], keys: string[]} */

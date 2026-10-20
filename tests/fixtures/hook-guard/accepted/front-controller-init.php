@@ -7,6 +7,7 @@ class FixtureDisplayModuleFrontController extends ModuleFrontController
     public function init()
     {
         parent::init();
+        $this->display_column_left = false;
     }
 
     public function initContent()

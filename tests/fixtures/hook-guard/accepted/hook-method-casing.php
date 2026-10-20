@@ -14,13 +14,16 @@ class FixtureHookMethodCasing extends Module
 
     public function hookdisplayheader($params)
     {
+        // Empty on purpose: the hook guard only reads the method name.
     }
 
     public function HOOKDISPLAYTOP($params)
     {
+        // Empty on purpose: the hook guard only reads the method name.
     }
 
     public function hookDisplayOverrideTemplate($params)
     {
+        // Empty on purpose: the hook guard only reads the method name.
     }
 }
