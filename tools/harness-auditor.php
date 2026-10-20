@@ -97,7 +97,7 @@ final class HarnessAuditor
         }
         $this->sqlGuard = new PsSqlGuard();
         $this->contextGuard = new PsContextGuard();
-        echo '  Hook catalog: ' . $this->hookGuard->getHookCount() . " hook names\n";
+        echo '  Hook catalog: ' . $this->hookGuard->getHookCount() . ' hook names, ' . $this->hookGuard->getAliasCount() . " legacy aliases\n";
 
         [$code, $out] = $this->runProcess(['node', '--version']);
         if ($code !== 0) {
@@ -123,7 +123,8 @@ final class HarnessAuditor
         $total = 0;
 
         $catalogHooks = ['displayHeader', 'displayTop', 'actionCartSave', 'actionValidateOrder', 'actionProductSave',
-            'actionProductAdd', 'actionDispatcherBefore', 'displayBackOfficeHeader', 'displayPaymentReturn'];
+            'actionProductAdd', 'actionDispatcherBefore', 'displayBackOfficeHeader', 'displayPaymentReturn', 'paymentOptions',
+            'actionObjectProductUpdateAfter', 'actionFeatureFormBuilderModifier', 'actionCustomerGridDefinitionModifier'];
         foreach ($catalogHooks as $hook) {
             $total++;
             if ($this->probe($this->hookGuard, "<?php\n\$this->registerHook('{$hook}');", 'HALLUCINATED_HOOK')) {
@@ -136,10 +137,14 @@ final class HarnessAuditor
             ["add_filter('the_content', 'foo');", 'WP_HALLUCINATION', true],
             ["registerHook('wp_head');", 'WP_HALLUCINATION', true],
             ["registerHook('wp_footer');", 'WP_HALLUCINATION', true],
-            ["init();", 'WP_HALLUCINATION', true],
-            ["admin_init();", 'WP_HALLUCINATION', true],
+            ["wp_enqueue_script('foo');", 'WP_HALLUCINATION', true],
             ["woocommerce_before_calculate_totals();", 'WP_HALLUCINATION', true],
             ["woocommerce_cart_calculate_fees();", 'WP_HALLUCINATION', true],
+            // init() and admin_init() are legitimate controller method names; comments and strings are not code.
+            ["class C extends ModuleFrontController { public function init() { parent::init(); } }", 'WP_HALLUCINATION', false],
+            ["admin_init();", 'WP_HALLUCINATION', false],
+            ["// Unlike add_action('init', ...) in WordPress", 'WP_HALLUCINATION', false],
+            ["\$this->l('Replaces add_filter() from WordPress');", 'WP_HALLUCINATION', false],
             ["\$this->registerHook('actionProductCreate');", 'HALLUCINATED_HOOK', true],
             ["\$this->registerHook('actionCartUpdate');", 'HALLUCINATED_HOOK', true],
             ["public function hookDisplayHeader(\$params) {}", 'HOOK_CASING', false],
@@ -147,6 +152,13 @@ final class HarnessAuditor
             ["public function hookDisplayTop(\$params) {}", 'HOOK_CASING', false],
             ["\$this->registerHook(['displayHeader', 'displayTop']);", 'HALLUCINATED_HOOK', false],
             ["\$hooks = ['fakeHookOne']; foreach (\$hooks as \$h) { \$this->registerHook(\$h); }", 'HALLUCINATED_HOOK', true],
+            ["\$hooks = array('fakeHookOne'); foreach (\$hooks as \$h) { \$this->registerHook(\$h); }", 'HALLUCINATED_HOOK', true],
+            ["class C { const HOOKS = ['fakeHookOne']; function install() { return \$this->registerHook(self::HOOKS); } }", 'HALLUCINATED_HOOK', true],
+            ["class C { private \$hooks = ['fakeHookOne']; function install() { foreach (\$this->hooks as \$h) { \$this->registerHook(\$h); } } }", 'HALLUCINATED_HOOK', true],
+            ["\$this->registerHook('header');", 'HOOK_ALIAS', true],
+            ["\$this->registerHook('header');", 'HALLUCINATED_HOOK', false],
+            ["\$this->registerHook('displayGenisoftBanner'); Hook::exec('displayGenisoftBanner');", 'CUSTOM_HOOK', true],
+            ["\$this->registerHook('displayGenisoftBanner'); Hook::exec('displayGenisoftBanner');", 'HALLUCINATED_HOOK', false],
         ];
         $sqlProbes = [
             ['"SELECT * FROM orders WHERE id = $id"', 'SQL_DIRECT_INTERPOLATION', true],
@@ -328,6 +340,8 @@ final class HarnessAuditor
         }
         echo '  ' . count($phpFiles) . ' PHP file(s), ' . count($tplFiles) . ' Smarty template(s) (skipping '
             . implode('/, ', GuardRunner::SKIPPED_DIRS) . "/)\n";
+        // A custom hook may be registered in one file and executed in another file or a template.
+        $this->hookGuard->prepare(GuardRunner::collectFiles($target, ['php', 'tpl', 'twig']));
 
         foreach ($phpFiles as $file) {
             [$code, $out, $err] = $this->runProcess([PHP_BINARY, '-n', '-l', $file]);

@@ -18,7 +18,7 @@ hero:
 
 features:
   - title: 🛡️ Anti-Hallucination Hook Guard
-    details: Checks registered hooks and hook methods against a 669-entry hook catalog. Flags WordPress functions and unknown hook names.
+    details: Checks registered hooks and hook methods against 1,301 hook names taken from PrestaShop 1.7.8, 8.2 and 9.2, plus the names the core builds at runtime. Flags WordPress calls and unknown hook names; warns on legacy aliases.
   - title: 🔒 Zero-Trust SQL AppSec
     details: Regex-based checks that flag variables concatenated into SQL without pSQL() or an (int)/(float) cast, and table names without _DB_PREFIX_.
   - title: 🌐 Multi-Shop Isolation

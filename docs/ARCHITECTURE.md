@@ -12,7 +12,7 @@ The **Genisoft PrestaShop AI Harness** provides an automated verification harnes
 +-----------------------------------------------------------+
 |          Genisoft PrestaShop Verification Harness         |
 +-----------------------------------------------------------+
-  |-- Gate 1: Hook Catalog Validator (669-entry catalog)    |
+  |-- Gate 1: Hook Catalog Validator (1,301 hook names)     |
   |-- Gate 2: SQL AppSec & Type Safety (pSQL / (int))       |
   |-- Gate 3: Smarty XSS & Translation Domain Linter        |
   |-- Gate 4: Multi-Shop Context Isolation Scanner          |
@@ -31,7 +31,12 @@ The **Genisoft PrestaShop AI Harness** provides an automated verification harnes
 ## The 4 Verification Subsystems
 
 ### 1. Hook Safety Engine (`tools/ps-hook-guard.php`)
-PrestaShop defines several hundred hooks across front-office, back-office, and core lifecycle events. AI models frequently confuse hook names with WooCommerce actions or legacy versions. The Hook Safety Engine uses regular expressions to extract `registerHook()` arguments and `hook<Name>()` methods, and matches them against the 669 names in `data/ps-hooks-reference.json`. A hook in the catalog can still be one that a given PrestaShop version no longer executes.
+PrestaShop defines several hundred hooks across front-office, back-office, and core lifecycle events. AI models frequently confuse hook names with WooCommerce actions or legacy versions. The Hook Safety Engine reads the PHP tokens of each file (comments and strings are ignored), follows the hook lists passed to `registerHook()` through variables, `array()` literals, class constants, properties, getter methods and `foreach` loops, and checks every name and `hook<Name>()` method against:
+- the 1,301 hook names of `data/ps-hooks-reference.json`, rebuilt from the `ps_hook` tables and the hook calls in the code of PrestaShop 1.7.8.11, 8.2.8 and 9.2.0 (each entry records its `source` and `versions`);
+- the names the core builds at runtime (`actionObject<Class>AddAfter`, `action<Grid>GridDefinitionModifier`, `actionAfterUpdate<Form>FormHandler`, `action<AdminController>Controller<Action>Before`...);
+- the 82 legacy aliases of `ps_hook_alias` (`header`, `top`...), accepted with a warning that gives the modern name.
+
+A name that is none of these is an error, unless the module executes it itself (`Hook::exec()`, `{hook h=...}`): then it is the module's own custom hook and gets a warning. WordPress API calls (`add_action()`, `wp_*()`...) are critical findings. A hook in the catalog can still be one that a given PrestaShop version no longer executes.
 
 ### 2. SQL AppSec Engine (`tools/ps-sql-guard.php`)
 PrestaShop does not use an ORM for module data access by default. Raw SQL queries through `Db::getInstance()` require rigorous parameter handling. The SQL AppSec Engine (regular expressions, no data-flow tracking) flags:

@@ -7,7 +7,7 @@ To orchestrate autonomous coding agents (Claude Code, Cursor, Copilot, Antigravi
 ### Protocol Files in Repository Root
 - **`AGENTS.md`**: Top-level instructions read by autonomous agents during session initialization.
 - **`tools/harness-auditor.php`** (or `tools/audit-harness.sh`): module auditor that runs every guard on a module directory.
-- **`data/ps-hooks-reference.json`**: Reference hook catalog (669 hook names).
+- **`data/ps-hooks-reference.json`**: Reference hook catalog (1,301 hook names and 82 legacy aliases from PrestaShop 1.7.8.11, 8.2.8 and 9.2.0).
 
 ### The 4-Step Autonomous Agent Workflow
 1. **Orient**: Read `AGENTS.md` and inspect existing module structure.
