@@ -13,5 +13,7 @@ php tools/ps-sql-guard.php projects/project-02-sql-injection-and-multishop-leak/
 ```
 
 ## Pass Criteria
-- All variable inputs strictly cast to `(int)` or sanitized with `pSQL()`.
-- Multi-store table joins strictly constrained by `id_shop = (int)$this->context->shop->id`.
+- Every value cast to `(int)` or escaped with `pSQL()` where it is concatenated (the guard does not follow variables).
+- Multi-store table joins constrained by `id_shop = (int)$this->context->shop->id`.
+- The solution actually runs: `php tests/project-02-solution-smoke.php` executes both queries against PrestaShop stubs.
+- CI (`tests/fixtures.sh`) checks that the SQL and context guards exit 1 on the starter and 0 on the solution.

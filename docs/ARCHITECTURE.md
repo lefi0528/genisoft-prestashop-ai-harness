@@ -12,7 +12,7 @@ The **Genisoft PrestaShop AI Harness** provides an automated verification harnes
 +-----------------------------------------------------------+
 |          Genisoft PrestaShop Verification Harness         |
 +-----------------------------------------------------------+
-  |-- Gate 1: Hook Catalog Validator (669 Official Hooks)   |
+  |-- Gate 1: Hook Catalog Validator (1,301 hook names)     |
   |-- Gate 2: SQL AppSec & Type Safety (pSQL / (int))       |
   |-- Gate 3: Smarty XSS & Translation Domain Linter        |
   |-- Gate 4: Multi-Shop Context Isolation Scanner          |
@@ -23,28 +23,39 @@ The **Genisoft PrestaShop AI Harness** provides an automated verification harnes
        | [PASS]                                    | [FAIL]
        v                                           v
 +-------------------------------+   +-------------------------------+
-| Production Deployment Ready   |   | Automated Agent Feedback Loop |
-| Zero-Regression Guarantee     |   | Actionable Error Diagnostics  |
+| Next: human review, then      |   | Automated Agent Feedback Loop |
+| install tests on target PS    |   | Actionable Error Diagnostics  |
 +-------------------------------+   +-------------------------------+
 ```
 
 ## The 4 Verification Subsystems
 
 ### 1. Hook Safety Engine (`tools/ps-hook-guard.php`)
-PrestaShop 8+ defines over 660 hooks across front-office, back-office, and core lifecycle events. AI models frequently confuse hook names with WooCommerce actions or legacy versions. The Hook Safety Engine parses AST token streams, extracts registered hooks and implementation methods, and matches them against `data/ps-hooks-reference.json`.
+PrestaShop defines several hundred hooks across front-office, back-office, and core lifecycle events. AI models frequently confuse hook names with WooCommerce actions or legacy versions. The Hook Safety Engine reads the PHP tokens of each file (comments and strings are ignored), follows the hook lists passed to `registerHook()` through variables, `array()` literals, class constants, properties, getter methods and `foreach` loops, and checks every name and `hook<Name>()` method against:
+- the 1,301 hook names of `data/ps-hooks-reference.json`, rebuilt from the `ps_hook` tables and the hook calls in the code of PrestaShop 1.7.8.11, 8.2.8 and 9.2.0 (each entry records its `source` and `versions`);
+- the names the core builds at runtime (`actionObject<Class>AddAfter`, `action<Grid>GridDefinitionModifier`, `actionAfterUpdate<Form>FormHandler`, `action<AdminController>Controller<Action>Before`...);
+- the 82 legacy aliases of `ps_hook_alias` (`header`, `top`...), accepted with a warning that gives the modern name.
+
+A name that is none of these is an error, unless the module executes it itself (`Hook::exec()`, `{hook h=...}`): then it is the module's own custom hook and gets a warning. WordPress API calls (`add_action()`, `wp_*()`...) are critical findings. A hook in the catalog can still be one that a given PrestaShop version no longer executes.
 
 ### 2. SQL AppSec Engine (`tools/ps-sql-guard.php`)
-PrestaShop does not use an ORM for module data access by default. Raw SQL queries through `Db::getInstance()` require rigorous parameter handling. The SQL AppSec Engine flags:
-- String concatenation without `pSQL()`.
-- Numerical ID concatenation without `(int)` or `(float)`.
+PrestaShop does not use an ORM for module data access by default. Raw SQL queries through `Db::getInstance()` require rigorous parameter handling. The SQL AppSec Engine (regular expressions, no data-flow tracking) flags:
+- `$variables` concatenated into SQL without `pSQL()`, `(int)` or `(float)` at the concatenation point.
+- Request values (`Tools::getValue()`, `Tools::getAllValues()`, `$_GET`, `$_POST`, `$_REQUEST`, `$_COOKIE`) concatenated into SQL, directly or inside other calls such as `trim()`, without `(int)`, `(float)`, `intval()`, `floatval()`, `pSQL()`, `bqSQL()` or `Db::getInstance()->escape()` around them.
+- Variables interpolated in double-quoted SQL strings.
 - Table references lacking the `_DB_PREFIX_` constant.
 
+It only reads SQL passed to `Db::getInstance()->execute()`, `executeS()`, `getValue()` or `getRow()` and `$...sql...` assignments, so SQL built with `DbQuery` or in `update()` / `delete()` conditions is not checked, and a clean run is not proof of the absence of SQL injection. The README Limitations section lists the exact cases.
+
 ### 3. Smarty Template Guard (`tools/ps-smarty-guard.js`)
-Smarty 3/4 compiles `.tpl` files into native PHP scripts. Unescaped variable interpolation is the primary source of reflected and stored Cross-Site Scripting (XSS) in e-commerce stores. The Smarty Guard enforces:
+Smarty 3/4 compiles `.tpl` files into native PHP scripts. Unescaped variable interpolation is the primary source of reflected and stored Cross-Site Scripting (XSS) in e-commerce stores. The Smarty Guard (regular expressions) flags templates that break these rules:
 - Output sanitization with `|escape:'html':'UTF-8'`.
 - JavaScript sanitization with `|escape:'javascript':'UTF-8'`.
 - Ban on deprecated `{php}` execution blocks.
 - PrestaShop 8+ translation domain compliance (`d='Modules.MyModule.Shop'`).
 
 ### 4. Multi-Shop Context Isolation (`tools/ps-context-guard.php`)
-In multi-store configurations, data tables are partitioned by `id_shop`. Joining `product_shop` or `category_shop` without filtering by `id_shop` leaks inventory and pricing across separate commercial entities. The Context Guard inspects query clauses and flags unconstrained shop joins.
+In multi-store configurations, data tables are partitioned by `id_shop`. Joining `product_shop` or `category_shop` without filtering by `id_shop` leaks inventory and pricing across separate commercial entities. The Context Guard flags files that join these tables without any `id_shop =` condition (the check is per file, not per query).
+
+## The Module Auditor (`tools/harness-auditor.php`)
+`php tools/harness-auditor.php <module-dir>` first self-tests the guards on known snippets (a guard that drifted makes the run a tool error), then runs the 4 guards, `php -l` and packaging checks on the module. Exit codes: 0 = no ERROR/CRITICAL finding, 1 = finding(s), 2 = tool error (missing path, nothing scanned, Node.js missing, corrupt hook catalog). It prints PASS or FAIL, never a certification.

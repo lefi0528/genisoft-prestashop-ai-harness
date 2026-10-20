@@ -24,7 +24,8 @@ class MyModule extends Module
 
         $this->displayName = $this->l('My Module');
         $this->description = $this->l('Module description.');
-        $this->ps_versions_compliancy = ['min' => '1.7.8.0', 'max' => _PS_VERSION_];
+        // Set 'max' to the highest version you actually tested: _PS_VERSION_ would claim every future release.
+        $this->ps_versions_compliancy = ['min' => '1.7.8.0', 'max' => '9.2.99'];
     }
 }
 ```

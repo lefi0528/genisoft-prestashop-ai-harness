@@ -8,14 +8,14 @@ class BrokenAiModule extends Module
         add_action('wp_head', [$this, 'injectHeader']);
         
         // Hallucinated PrestaShop hooks
-        $this->registerHook('actionProductAdd');
+        $this->registerHook('actionProductCreate');
         $this->registerHook('actionCartUpdate');
         
         return parent::install();
     }
 
-    public function hookActionProductAdd($params)
+    public function hookActionProductCreate($params)
     {
-        // Never triggers
+        // Never triggers: no PrestaShop core code executes actionProductCreate
     }
 }

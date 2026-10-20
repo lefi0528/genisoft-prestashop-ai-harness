@@ -20,16 +20,16 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2
         with:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring, json, tokenizer
@@ -40,23 +40,38 @@ jobs:
       - name: Generate Composer Autoload
         run: composer dump-autoload --optimize
 
+      # xargs exits non-zero if any `php -l` fails (find -exec \; would not).
       - name: Lint PHP Syntax
-        run: |
-          find tools -name "*.php" -exec php -l {} \;
-          find examples -name "*.php" -exec php -l {} \;
-          find projects/*/solution -name "*.php" -exec php -l {} \;
+        run: find tools examples projects tests -name '*.php' -print0 | xargs -0 -n1 php -l
 
-      - name: Test PrestaShop Hook Guard
-        run: php tools/ps-hook-guard.php examples/genisoft_cartthreshold/genisoft_cartthreshold.php
+      - name: Lint Smarty Guard
+        run: node --check tools/ps-smarty-guard.js
 
-      - name: Test SQL AppSec Guard
-        run: php tools/ps-sql-guard.php examples/genisoft_cartthreshold/genisoft_cartthreshold.php
+      - name: Guard fixtures (starters must fail, solutions and example must pass)
+        run: bash tests/fixtures.sh
 
-      - name: Test Smarty Security Guard
-        run: node tools/ps-smarty-guard.js examples/genisoft_cartthreshold/views/templates/hook/cart_threshold_bar.tpl
+      - name: Project 02 solution runtime smoke test
+        run: php tests/project-02-solution-smoke.php
 
-      - name: Test Multi-Shop Context Guard
-        run: php tools/ps-context-guard.php examples/genisoft_cartthreshold/genisoft_cartthreshold.php
+      - name: Audit the example module
+        run: bash tools/audit-harness.sh examples/genisoft_cartthreshold
 
-      - name: Run 100-Point Live Harness Audit
-        run: bash tools/audit-harness.sh
+  example-module-lint:
+    name: Example module syntax (PHP ${{ matrix.php-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # PrestaShop 1.7.8 runs on PHP 7.1-7.4; PrestaShop 9.x on PHP 8.1+.
+        php-version: ['7.1', '7.4', '8.1', '8.4']
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      - name: Lint example module
+        run: find examples -name '*.php' -print0 | xargs -0 -n1 php -l

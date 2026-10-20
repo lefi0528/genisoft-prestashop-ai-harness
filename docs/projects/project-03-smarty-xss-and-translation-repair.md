@@ -14,6 +14,6 @@ node tools/ps-smarty-guard.js projects/project-03-smarty-xss-and-translation-rep
 ```
 
 ## Pass Criteria
-- 100% of rendered variables escaped with `|escape:'html':'UTF-8'`.
+- Every rendered variable escaped with `|escape:'html':'UTF-8'` (or another escaping modifier).
 - 0 `{php}` tags.
 - Domain-qualified translation calls (`d='Modules.MyModule.Shop'`).

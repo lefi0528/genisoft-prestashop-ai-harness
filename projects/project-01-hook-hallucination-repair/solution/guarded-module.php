@@ -10,7 +10,7 @@ class GuardedModule extends Module
             return false;
         }
 
-        // Compliant official PrestaShop 8+ hooks from 669 catalog
+        // Hooks listed in data/ps-hooks-reference.json and executed by the core
         $validHooks = [
             'displayHeader',
             'actionProductSave',
