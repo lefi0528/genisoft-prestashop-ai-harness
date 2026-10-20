@@ -441,12 +441,11 @@ class PsHookGuard
         if (!$this->is($body, ':')) {
             return $this->statementEnd($body);
         }
-        for ($k = $body; $k < count($this->t); $k++) {
-            if ($this->is($k, T_ENDFOREACH)) {
-                return $k;
-            }
+        $end = $body;
+        while ($end < count($this->t) - 1 && !$this->is($end, T_ENDFOREACH)) {
+            $end++;
         }
-        return count($this->t) - 1;
+        return $end;
     }
 
     /** First index in [$start, $end) holding $id outside nested brackets. */
@@ -480,7 +479,8 @@ class PsHookGuard
     private function indexVariable(int $i): void
     {
         $name = $this->t[$i][1];
-        $assign = $this->is($i + 1, '[') && $this->is($i + 2, ']') ? $i + 3 : $i + 1;   // $hooks[] = 'x';
+        // An append with empty brackets counts as an assignment too.
+        $assign = $this->is($i + 1, '[') && $this->is($i + 2, ']') ? $i + 3 : $i + 1;
         if (!$this->is($assign, '=')) {
             return;
         }
@@ -513,27 +513,41 @@ class PsHookGuard
         $i = $start;
         while ($i < $end) {
             $id = $this->t[$i][0];
-            $kind = $stack === [] ? 'array' : end($stack);
             $last = $i;
             if ($id === '(' || $id === '[') {
                 $stack[] = $this->bracketKind($i);
             } elseif ($id === ')' || $id === ']') {
                 array_pop($stack);
-            } elseif ($id === T_CONSTANT_ENCAPSED_STRING) {
-                if ($kind === 'array') {
-                    $result = self::merge($result, $this->literal($i, count(array_keys($stack, 'array', true)) <= 1));
-                }
-            } elseif ($kind !== 'other') {
-                [$found, $last] = $this->reference($i);
-                // A reference concatenated with something else ($this->name . 'Banner') builds a name at runtime.
-                if ($found !== null && !$this->is($i - 1, '.') && !$this->is($last + 1, '.')) {
-                    $result = self::merge($result, $found);
-                }
+            } else {
+                [$found, $last] = $this->valueAt($i, $stack);
+                $result = self::merge($result, $found);
             }
             $i = $last + 1;
         }
 
         return $result;
+    }
+
+    /**
+     * What the literal or reference at $i adds to the expression, given the brackets open around it.
+     *
+     * @param list<string> $stack kinds of the open brackets, see resolve()
+     * @return array{0: array{values: string[], keys: string[]}, 1: int} the names and the last token read
+     */
+    private function valueAt(int $i, array $stack): array
+    {
+        $kind = $stack === [] ? 'array' : end($stack);
+        $none = ['values' => [], 'keys' => []];
+        if ($this->is($i, T_CONSTANT_ENCAPSED_STRING)) {
+            return [$kind === 'array' ? $this->literal($i, count(array_keys($stack, 'array', true)) <= 1) : $none, $i];
+        }
+        if ($kind === 'other') {
+            return [$none, $i];
+        }
+        [$found, $last] = $this->reference($i);
+        // A reference concatenated with something else ($this->name . 'Banner') builds a name at runtime.
+        $usable = $found !== null && !$this->is($i - 1, '.') && !$this->is($last + 1, '.');
+        return [$usable ? $found : $none, $last];
     }
 
     /**
@@ -562,27 +576,36 @@ class PsHookGuard
     private function reference(int $i): array
     {
         $tok = $this->t[$i];
-        if ($tok[0] === T_VARIABLE && $tok[1] !== '$this') {
-            $plain = !$this->is($i + 1, '[') && !$this->isObjectOperator($i + 1) && !$this->is($i + 1, '=');
-            return [$plain ? $this->resolveVariable($tok[1], $i) : null, $i];
-        }
+        $found = null;
+        $last = $i;
         $isMember = $tok[0] === T_VARIABLE && $this->isObjectOperator($i + 1) && $this->is($i + 2, T_STRING);
         $isStatic = in_array($tok[0], [T_STRING, T_STATIC, T_NAME_FULLY_QUALIFIED, T_NAME_QUALIFIED], true)
             && $this->is($i + 1, T_DOUBLE_COLON) && isset($this->t[$i + 2]);
-        if (!$isMember && !$isStatic) {
-            return [null, $i];
+        if ($tok[0] === T_VARIABLE && $tok[1] !== '$this') {
+            $plain = !$this->is($i + 1, '[') && !$this->isObjectOperator($i + 1) && !$this->is($i + 1, '=');
+            $found = $plain ? $this->resolveVariable($tok[1], $i) : null;
+        } elseif ($isMember || $isStatic) {
+            $member = $this->t[$i + 2];
+            $call = $this->is($i + 3, '(');
+            $last = $call ? $this->close($i + 3) : $i + 2;
+            $found = $call ? $this->resolveMethod($member[1]) : $this->resolveMember($member, $isMember);
         }
-        $member = $this->t[$i + 2];
-        $call = $this->is($i + 3, '(');
-        $last = $call ? $this->close($i + 3) : $i + 2;
-        if ($call) {
-            return [$this->resolveMethod($member[1]), $last];
-        }
-        if ($isMember || $member[0] === T_VARIABLE) {
-            return [$this->resolveProperty(ltrim($member[1], '$')), $last];
+        return [$found, $last];
+    }
+
+    /**
+     * A property ($this->hooks, self::$hooks) or a class constant (self::HOOKS) that is not called.
+     *
+     * @param array{0: int|string, 1: string, 2: int} $member token after -> or ::
+     * @return array{values: string[], keys: string[]}|null null for a constant not defined in this file
+     */
+    private function resolveMember(array $member, bool $isObjectMember): ?array
+    {
+        if ($isObjectMember || $member[0] === T_VARIABLE) {
+            return $this->resolveProperty(ltrim($member[1], '$'));
         }
         $constant = $this->constants[$member[1]] ?? null;
-        return [$constant !== null ? $this->resolveOnce('const:' . $member[1], $constant) : null, $last];
+        return $constant !== null ? $this->resolveOnce('const:' . $member[1], $constant) : null;
     }
 
     /**
@@ -675,17 +698,16 @@ class PsHookGuard
         $prev = $this->t[$i - 1] ?? [null, ''];
         if ($this->is($i, '[')) {
             // [ after a variable, a name or a closing bracket is an index access, otherwise an array literal.
-            return in_array($prev[0], [T_VARIABLE, T_STRING, ']', ')', '}'], true) ? 'other' : 'array';
+            $kind = in_array($prev[0], [T_VARIABLE, T_STRING, ']', ')', '}'], true) ? 'other' : 'array';
+        } elseif ($prev[0] === T_ARRAY) {
+            $kind = 'array';
+        } else {
+            $passThrough = in_array($prev[0], [T_STRING, T_NAME_FULLY_QUALIFIED], true)
+                && in_array(strtolower(ltrim($prev[1], '\\')), self::PASS_THROUGH, true)
+                && !$this->isObjectOperator($i - 2) && !$this->is($i - 2, T_DOUBLE_COLON);
+            $kind = $passThrough ? 'pass' : 'other';
         }
-        if ($prev[0] === T_ARRAY) {
-            return 'array';
-        }
-        if (in_array($prev[0], [T_STRING, T_NAME_FULLY_QUALIFIED], true)
-            && in_array(strtolower(ltrim($prev[1], '\\')), self::PASS_THROUGH, true)
-            && !$this->isObjectOperator($i - 2) && !$this->is($i - 2, T_DOUBLE_COLON)) {
-            return 'pass';
-        }
-        return 'other';
+        return $kind;
     }
 
     /** True for Hook::<name>( or HookCore::<name>( at token $i. */
