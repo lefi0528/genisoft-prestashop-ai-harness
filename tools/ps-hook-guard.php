@@ -16,7 +16,8 @@ if (php_sapi_name() === 'cli') {
             return new PsHookGuard(dirname(__DIR__) . '/data/ps-hooks-reference.json');
         },
         static function (PsHookGuard $guard): string {
-            return 'Catalog: ' . $guard->getHookCount() . ' hook names loaded from data/ps-hooks-reference.json.';
+            return 'Catalog: ' . $guard->getHookCount() . ' hook names and ' . $guard->getAliasCount()
+                . ' legacy aliases loaded from data/ps-hooks-reference.json.';
         }
     ));
 }
