@@ -2,7 +2,7 @@
 
 [![CI & Security Matrix](https://github.com/lefi0528/genisoft-prestashop-ai-harness/actions/workflows/test-harness.yml/badge.svg)](https://github.com/lefi0528/genisoft-prestashop-ai-harness/actions/workflows/test-harness.yml)
 [![Documentation](https://img.shields.io/badge/Docs-VitePress-0284c7?logo=vitepress)](https://lefi0528.github.io/genisoft-prestashop-ai-harness/)
-[![PrestaShop](https://img.shields.io/badge/example%20module%20tested%20on-PrestaShop%201.7.8%20%7C%209.2-df0067?logo=prestashop)](examples/genisoft_cartthreshold/)
+[![PrestaShop](https://img.shields.io/badge/example%20module%20tested%20on-PrestaShop%201.7.8%20%7C%208.2%20%7C%209.2-df0067?logo=prestashop)](examples/genisoft_cartthreshold/)
 [![PHP](https://img.shields.io/badge/PHP-%3E%3D8.1-777bb4?logo=php)](https://www.php.net/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=lefi0528_genisoft-prestashop-ai-harness&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=lefi0528_genisoft-prestashop-ai-harness)
@@ -100,14 +100,22 @@ Our interactive documentation provides 10 in-depth lectures covering every facet
 
 A small teaching module (free-shipping progress bar) in [`examples/genisoft_cartthreshold/`](examples/genisoft_cartthreshold/). It is an example, not a product: review and test it before using it on a live shop.
 
-- **What was tested (version 1.1.0)**, by installing it with `bin/console prestashop:module` and requesting real pages:
-  - PrestaShop **1.7.8.11** (PHP 7.4): upgrade from 1.0.0, uninstall, install; home, category, product and cart pages with an empty and a non-empty cart; language switch and currency switch (EUR → AED → EUR) with a non-empty cart.
-  - PrestaShop **9.2.0** (PHP 8.3): upgrade from 1.0.0, uninstall, install; home, category, product and cart pages with an empty and a non-empty cart (that test shop has a single language and currency).
-  - Not tested: PrestaShop 8.x, saving the back-office form, per-shop thresholds in multistore. `ps_versions_compliancy` therefore stops at 9.2.
-- **Back-Office Configuration**: `HelperForm`, posted to the back office's tokenized module URL.
-- **Prices**: formatted with `Context::getCurrentLocale()->formatPrice()` (`Tools::displayPrice()` no longer exists in PrestaShop 9); the threshold is converted to the visitor's currency before comparison.
+- **What was tested (version 1.2.0)**, in a browser on real shops, with "My carrier" (8.40 € incl. tax) as the paying carrier:
+  - PrestaShop **1.7.8.11** (PHP 7.4, classic theme, multistore with two shops): upgrade from 1.1.0 and install with `bin/console prestashop:module`; `install()` forced to fail after `parent::install()` (hook registration returning false, then throwing): the module is not left installed; back-office form; bar refreshed after add to cart on a product page and after the quantity buttons and delete link on the cart page; language switch and currency switch (EUR → AED → EUR) with a non-empty cart; the module listed in International > Translations.
+  - PrestaShop **8.2.8** (PHP 8.1, classic theme): upgrade from 1.1.0 in the back-office module manager; back-office form, whose value then shows in Shipping > Preferences; bar refreshed on the product and cart pages; language switch with a non-empty cart; a French string edited in International > Translations appears on the front office.
+  - PrestaShop **9.2.0** (PHP 8.3, custom theme, single language and currency): upgrade from 1.1.0 and reset in the back-office module manager; back-office form; bar refreshed on the product and cart pages; another module lowering the free-shipping amount to 30 € through `actionOverrideShippingFreePrice` (the bar followed it, as did PrestaShop's shipping cost).
+  - On all three: below the amount PrestaShop charges shipping and the bar shows what is missing; from the amount PrestaShop shows free shipping and so does the bar.
+  - Not tested: PrestaShop 8.0, 8.1, 9.0 and 9.1, the Hummingbird theme, per-shop amounts in multistore. `ps_versions_compliancy` therefore stops at 9.2.
+- **Free-shipping amount**: the bar counts down to PrestaShop's own "Free shipping starts at" (`PS_SHIPPING_FREE_PRICE`, Shipping > Preferences), and the module form edits that same setting. It uses the same total and comparison as `Cart::getPackageShippingCost()` (tax included, discounts deducted, shipping excluded), converts the amount to the visitor's currency and, from PrestaShop 9.1, runs the `actionOverrideShippingFreePrice` hook as the core does. The bar is hidden when the amount is 0 and for carts that only hold virtual products.
+- **Not followed by the bar**: free shipping by weight (`PS_SHIPPING_FREE_WEIGHT`), free carriers and free-shipping cart rules (the bar can still ask for more while shipping is already free), and carrier modules that compute their own cost (they can still charge once the amount is reached).
+- **AJAX refresh**: `views/js/cart_threshold.js` listens to the theme's `updateCart` event and replaces the bar with the HTML returned by the front controller `controllers/front/bar.php`, so the amounts always come from the PHP code.
+- **Back-Office Configuration**: `HelperForm`, posted to the back office's tokenized module URL. Accepts `49,90` as well as `49.90`, checks the amount with `Validate::isPrice()` and shows an error otherwise.
+- **Translations**: domains `Modules.Genisoftcartthreshold.Admin` and `Modules.Genisoftcartthreshold.Shop` (module name without its underscore, which is how PrestaShop builds module domains), French in `translations/fr-FR/*.xlf`, editable in International > Translations.
+- **Install**: if registering the hooks or saving the setting fails after `parent::install()`, the module uninstalls itself, so it is never left installed and active.
+- **Prices**: formatted with `Context::getCurrentLocale()->formatPrice()` (`Tools::displayPrice()` no longer exists in PrestaShop 9).
 - **Directory Security**: `index.php` in every subdirectory to block directory listing.
 - **Smarty Templating**: escaped variables and domain-qualified translation strings.
+- **1.2.0 changes**: 1.1.0 compared the cart with its own amount, which PrestaShop never applies, so it announced "Free Shipping unlocked" while PrestaShop still charged shipping (8.40 € on the 1.7.8 and 8.2.8 test shops, whose "Free shipping starts at" was 0). It also never refreshed the bar after an AJAX cart change, saved `49,90` as 49, could not be translated (domain `Modules.Genisoft_cartthreshold.Shop`, which PrestaShop does not list), and stayed installed when `install()` failed after `parent::install()`. The upgrade script deletes the old `GENISOFT_THRESHOLD_AMOUNT` without copying it into `PS_SHIPPING_FREE_PRICE`, because that would start giving free shipping on a live shop without the merchant deciding it: until "Free shipping starts at" is set, the bar stays hidden and the configuration page says why.
 - **1.1.0 changes**: 1.0.0 crashed every front page on PrestaShop 9.2 (`Tools::displayPrice()`) and crashed PrestaShop 1.7.8 on a language or currency switch with a non-empty cart (cart total computed in `actionCartSave`, which `FrontController::init()` triggers before the cart is in the context). 1.1.0 fixes both and its upgrade script drops the write-only `genisoft_threshold_log` table that 1.0.0 filled from that hook. Both 1.0.0 bugs passed every static check of this harness, which is why the Limitations section below matters.
 
 ---
