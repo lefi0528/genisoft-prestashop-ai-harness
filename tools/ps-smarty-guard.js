@@ -91,15 +91,31 @@ class PsSmartyGuard {
   }
 }
 
-// CLI handler
+// CLI handler. Exit codes match the PHP guards: 0 no ERROR/CRITICAL finding,
+// 1 ERROR/CRITICAL finding(s), 2 tool error (bad arguments, missing path, no template found).
+const EXIT_CLEAN = 0;
+const EXIT_FINDINGS = 1;
+const EXIT_TOOL_ERROR = 2;
+const SKIPPED_DIRS = ['vendor', 'node_modules', '.git'];
+
 if (require.main === module) {
   const args = process.argv.slice(2);
-  if (args.length === 0 || args.includes('-h') || args.includes('--help')) {
-    console.log('Usage: node ps-smarty-guard.js <path-to-tpl-or-dir>');
-    process.exit(0);
+  const usage = 'Usage: node tools/ps-smarty-guard.js [--json] <path-to-tpl-or-dir>\n'
+    + `Scans .tpl files recursively (skipping ${SKIPPED_DIRS.join('/, ')}/).\n`
+    + 'Exit codes: 0 no blocking finding, 1 ERROR/CRITICAL finding(s), 2 tool error.';
+  if (args.includes('-h') || args.includes('--help')) {
+    console.log(usage);
+    process.exit(EXIT_CLEAN);
   }
 
-  const target = args[0];
+  const json = args.includes('--json');
+  const targets = args.filter(arg => arg !== '--json');
+  if (targets.length !== 1) {
+    console.error(usage);
+    process.exit(EXIT_TOOL_ERROR);
+  }
+
+  const target = targets[0];
   const guard = new PsSmartyGuard();
   const files = [];
 
@@ -108,49 +124,71 @@ if (require.main === module) {
     for (const entry of entries) {
       const fullPath = path.join(dir, entry.name);
       if (entry.isDirectory()) {
-        collectTplFiles(fullPath);
-      } else if (entry.isFile() && entry.name.endsWith('.tpl')) {
+        if (!SKIPPED_DIRS.includes(entry.name)) {
+          collectTplFiles(fullPath);
+        }
+      } else if (entry.isFile() && entry.name.toLowerCase().endsWith('.tpl')) {
         files.push(fullPath);
       }
     }
   }
 
-  if (fs.existsSync(target)) {
+  try {
+    if (!fs.existsSync(target)) {
+      throw new Error(`Path '${target}' does not exist.`);
+    }
     if (fs.statSync(target).isDirectory()) {
       collectTplFiles(target);
     } else {
       files.push(target);
     }
-  } else {
-    console.error(`Error: Path '${target}' does not exist.`);
-    process.exit(1);
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    process.exit(EXIT_TOOL_ERROR);
+  }
+  files.sort();
+
+  if (files.length === 0) {
+    console.error(`Error: no .tpl file found under '${target}'. Nothing was scanned.`);
+    process.exit(EXIT_TOOL_ERROR);
   }
 
-  let hasErrors = false;
+  const findings = [];
+  files.forEach(file => {
+    guard.validateFile(file).forEach(issue => findings.push({ file, ...issue }));
+  });
+  const blocking = findings.filter(issue => issue.severity === 'ERROR' || issue.severity === 'CRITICAL').length;
+  const exitCode = blocking > 0 ? EXIT_FINDINGS : EXIT_CLEAN;
+
+  if (json) {
+    console.log(JSON.stringify({ files_scanned: files.length, issues: findings }));
+    process.exit(exitCode);
+  }
+
   console.log('=== PrestaShop Smarty Security & Standards Guard ===');
   console.log(`Scanning ${files.length} template file(s)...\n`);
-
-  files.forEach(file => {
-    const issues = guard.validateFile(file);
-    if (issues.length > 0) {
-      console.log(`File: ${file}`);
-      issues.forEach(issue => {
-        console.log(`  Line ${issue.line}: [${issue.severity}] [${issue.category}] ${issue.message}`);
-        if (issue.severity === 'ERROR' || issue.severity === 'CRITICAL') {
-          hasErrors = true;
-        }
-      });
-      console.log();
+  let currentFile = null;
+  findings.forEach(issue => {
+    if (issue.file !== currentFile) {
+      if (currentFile !== null) {
+        console.log();
+      }
+      currentFile = issue.file;
+      console.log(`File: ${issue.file}`);
     }
+    console.log(`  Line ${issue.line}: [${issue.severity}] [${issue.category}] ${issue.message}`);
   });
-
-  if (hasErrors) {
-    console.log('FAILED: Critical Smarty security violations detected.');
-    process.exit(1);
+  if (currentFile !== null) {
+    console.log();
   }
 
-  console.log('PASSED: Smarty templates comply with PrestaShop 8+ XSS escaping guidelines.');
-  process.exit(0);
+  const summary = `${blocking} blocking (ERROR/CRITICAL), ${findings.length - blocking} non-blocking (WARNING/INFO) finding(s) in ${files.length} template(s).`;
+  if (exitCode === EXIT_FINDINGS) {
+    console.log(`FAILED: ${summary}`);
+  } else {
+    console.log(`PASSED: ${summary} Pattern-based checks only; this is not a proof of absence of XSS.`);
+  }
+  process.exit(exitCode);
 }
 
 module.exports = { PsSmartyGuard };

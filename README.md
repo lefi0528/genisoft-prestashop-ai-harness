@@ -2,13 +2,14 @@
 
 [![CI & Security Matrix](https://github.com/lefi0528/genisoft-prestashop-ai-harness/actions/workflows/test-harness.yml/badge.svg)](https://github.com/lefi0528/genisoft-prestashop-ai-harness/actions/workflows/test-harness.yml)
 [![Documentation](https://img.shields.io/badge/Docs-VitePress-0284c7?logo=vitepress)](https://lefi0528.github.io/genisoft-prestashop-ai-harness/)
-[![PrestaShop](https://img.shields.io/badge/PrestaShop-8.0%2B%20%7C%201.7.8-df0067?logo=prestashop)](https://www.prestashop.com/)
+[![PrestaShop](https://img.shields.io/badge/example%20module%20tested%20on-PrestaShop%201.7.8%20%7C%209.2-df0067?logo=prestashop)](examples/genisoft_cartthreshold/)
 [![PHP](https://img.shields.io/badge/PHP-%3E%3D8.1-777bb4?logo=php)](https://www.php.net/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=lefi0528_genisoft-prestashop-ai-harness&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=lefi0528_genisoft-prestashop-ai-harness)
 
 > **Autonomous PrestaShop 8+ Module Engineering & AppSec Harness for AI Coding Agents**  
-> Empowers modern LLM coding agents (Claude Code, Cursor, Copilot, Antigravity) to design, build, audit, and refactor PrestaShop modules with **static hook hallucination prevention**, **strict AppSec SQL sanitization**, and **multi-store context isolation**.
+> Gives LLM coding agents (Claude Code, Cursor, Copilot, Antigravity) fast, pattern-based checks for the PrestaShop mistakes they make most: **hallucinated hook names**, **unescaped SQL concatenation**, **multi-store joins without `id_shop`** and **unescaped Smarty output**.  
+> The checks are regular expressions, not a PHP parser: they catch common mistakes, they do not prove that a module is secure (see Limitations below).
 
 ---
 
@@ -16,12 +17,12 @@
 
 Foundation models (Claude Opus, GPT-4o, DeepSeek R1) are trained overwhelmingly on standard generic PHP frameworks (Laravel, Symfony) and WordPress. While PrestaShop 8 integrates Symfony components into its Core Back-Office, **module development remains a unique hybrid ecosystem**:
 
-1. **Hook Hallucination**: AI agents frequently inject WordPress functions (`add_action`, `add_filter`) or invent phantom hooks (`actionProductAdd`), leading to silent logic failure.
+1. **Hook Hallucination**: AI agents frequently inject WordPress functions (`add_action`, `add_filter`) or invent hooks that the core never executes (`actionProductCreate`, `actionCartUpdate`), leading to silent logic failure.
 2. **SQL Injection Vulnerabilities**: PrestaShop modules query data through `Db::getInstance()`. Naive AI models concatenate raw variables, causing critical SQL injection vectors.
 3. **Multi-Store Isolation Leaks**: Failing to filter by `id_shop` when joining `_shop` tables leaks customer data and catalog pricing between separate storefronts.
 4. **Smarty XSS Vectors**: Missing `|escape:'html':'UTF-8'` in Smarty `.tpl` templates introduces reflected and stored Cross-Site Scripting flaws.
 
-The **Genisoft PrestaShop AI Harness** provides an automated, deterministic verification gate between AI code generation and production deployment.
+The **Genisoft PrestaShop AI Harness** provides an automated, deterministic first gate between AI code generation and human review. It does not replace code review, nor testing the module on the PrestaShop versions it targets.
 
 ---
 
@@ -37,7 +38,7 @@ The **Genisoft PrestaShop AI Harness** provides an automated, deterministic veri
 +-----------------------------------------------------------+
 |        Genisoft PrestaShop 8+ Verification Harness        |
 +-----------------------------------------------------------+
-  |-- Gate 1: Hook Catalog Validator (669 Official Hooks)   |
+  |-- Gate 1: Hook Catalog Validator (669-entry catalog)    |
   |-- Gate 2: SQL AppSec & Type Safety (pSQL / (int))       |
   |-- Gate 3: Smarty XSS & Translation Domain Linter        |
   |-- Gate 4: Multi-Shop Context Isolation Scanner          |
@@ -48,8 +49,8 @@ The **Genisoft PrestaShop AI Harness** provides an automated, deterministic veri
        | [PASS]                                    | [FAIL]
        v                                           v
 +-------------------------------+   +-------------------------------+
-| Production Deployment Ready   |   | Automated Agent Feedback Loop |
-| Zero-Regression Guarantee     |   | Actionable Error Diagnostics  |
+| Next: human review, then      |   | Automated Agent Feedback Loop |
+| install tests on target PS    |   | Actionable Error Diagnostics  |
 +-------------------------------+   +-------------------------------+
 ```
 
@@ -57,11 +58,13 @@ The **Genisoft PrestaShop AI Harness** provides an automated, deterministic veri
 
 | Tool | Language | Purpose & Enforcement |
 | :--- | :--- | :--- |
-| **`tools/PsHookGuard.php`** (`ps-hook-guard.php`) | PHP 8.1+ (PSR-4) | Validates all registered hooks against the **669 official PrestaShop 8+ hooks catalog**. Eliminates WordPress action bleed and suggests corrections via Levenshtein distance. |
-| **`tools/PsSqlGuard.php`** (`ps-sql-guard.php`) | PHP 8.1+ (PSR-4) | Static AST scanner enforcing mandatory `pSQL()` string sanitization, `(int)` numerical casting, and `_DB_PREFIX_` prefixing. |
-| **`tools/ps-smarty-guard.js`** | Node.js | Smarty 3/4 linter detecting unescaped template variables, obsolete `{php}` blocks, and enforcing PrestaShop 8 translation domains (`d='Modules...'`). |
-| **`tools/PsContextGuard.php`** (`ps-context-guard.php`) | PHP 8.1+ (PSR-4) | Verifies multi-shop context (`Shop::getContext()`, `id_shop`) across database joins and configuration updates. |
-| **`tools/audit-harness.sh`** | Bash | 100-point repository auditor executing all verification gates and certifying module integrity. |
+| **`tools/PsHookGuard.php`** (`ps-hook-guard.php`) | PHP 8.1+ (PSR-4) | Checks `registerHook()` calls and `hook<Name>()` methods against the 669 hook names of `data/ps-hooks-reference.json`, flags WordPress functions, and suggests the closest hook name (Levenshtein distance). |
+| **`tools/PsSqlGuard.php`** (`ps-sql-guard.php`) | PHP 8.1+ (PSR-4) | Regex-based scanner: flags `$variables` concatenated into SQL without `(int)`, `(float)` or `pSQL()` at the concatenation point, variables interpolated in double-quoted SQL, and table names without `_DB_PREFIX_`. |
+| **`tools/ps-smarty-guard.js`** | Node.js | Regex-based Smarty linter flagging unescaped `{$variables}`, `nofilter`, `{php}` blocks, and `{l}` strings without a translation domain (`d='Modules...'`). |
+| **`tools/PsContextGuard.php`** (`ps-context-guard.php`) | PHP 8.1+ (PSR-4) | Flags `product_shop` / `category_shop` joins in files with no `id_shop =` condition, `Context::getContext()` inside loops, and 2-argument `Configuration::updateValue()` calls (info). |
+| **`tools/harness-auditor.php`** (`audit-harness.sh`) | PHP 8.1+ | Module auditor: `php tools/harness-auditor.php <module-dir>` self-tests the guards on known snippets, then runs the 4 guards, `php -l` and packaging checks (main file, `logo.png`, `index.php` in each folder) on the module. |
+
+Every tool uses the same exit codes: **0** = no ERROR/CRITICAL finding, **1** = ERROR/CRITICAL finding(s), **2** = tool error (missing path, no file to scan, missing or corrupt hook catalog, Node.js missing). WARNING and INFO findings are printed but do not fail the run.
 
 ---
 
@@ -76,7 +79,7 @@ Our interactive documentation provides 10 in-depth lectures covering every facet
 5. [Lecture 05: The Silent Killer: Multi-Shop & Multi-Lang Context Leaks](https://lefi0528.github.io/genisoft-prestashop-ai-harness/lectures/lecture-05-multishop-and-multilang-context-isolation)
 6. [Lecture 06: Smarty Template Security: XSS Prevention & Compilation](https://lefi0528.github.io/genisoft-prestashop-ai-harness/lectures/lecture-06-smarty-security-escaping-and-compilation)
 7. [Lecture 07: Back-Office Forms: HelperForm vs Symfony Form Types](https://lefi0528.github.io/genisoft-prestashop-ai-harness/lectures/lecture-07-helperform-vs-symfony-forms-in-prestashop-8)
-8. [Lecture 08: Verification Gates: Static AST Analysis & Scaffolding](https://lefi0528.github.io/genisoft-prestashop-ai-harness/lectures/lecture-08-verification-gates-and-ast-linting)
+8. [Lecture 08: Verification Gates: Pattern-Based Static Checks](https://lefi0528.github.io/genisoft-prestashop-ai-harness/lectures/lecture-08-verification-gates-and-ast-linting)
 9. [Lecture 09: E-Commerce Performance: N+1 Query Elimination & Object Cache](https://lefi0528.github.io/genisoft-prestashop-ai-harness/lectures/lecture-09-performance-n-plus-one-queries-and-cache)
 10. [Lecture 10: The Autonomous Agent Harness Protocol (AGENTS.md)](https://lefi0528.github.io/genisoft-prestashop-ai-harness/lectures/lecture-10-autonomous-agent-prompt-harness-protocol)
 
@@ -89,18 +92,23 @@ Our interactive documentation provides 10 in-depth lectures covering every facet
 | **[Project 01](https://lefi0528.github.io/genisoft-prestashop-ai-harness/projects/project-01-hook-hallucination-repair)** | Hook Hallucination Repair | Replace WordPress actions and phantom hooks with valid PrestaShop 8+ hook signatures. |
 | **[Project 02](https://lefi0528.github.io/genisoft-prestashop-ai-harness/projects/project-02-sql-injection-and-multishop-leak)** | SQL Injection & Multi-Shop Leak | Sanitize vulnerable database queries with `(int)` and `pSQL()`; secure `id_shop` constraints. |
 | **[Project 03](https://lefi0528.github.io/genisoft-prestashop-ai-harness/projects/project-03-smarty-xss-and-translation-repair)** | Smarty XSS & Translation Domain | Neutralize template XSS vectors and update to modern PrestaShop 8 translation domains. |
-| **[Project 04](https://lefi0528.github.io/genisoft-prestashop-ai-harness/projects/project-04-full-module-certification)** | Full Module Certification | Execute end-to-end verification and score 100/100 on the automated harness auditor. |
+| **[Project 04](https://lefi0528.github.io/genisoft-prestashop-ai-harness/projects/project-04-full-module-certification)** | Full Module Audit | Run the guards and the module auditor on a complete module, then confirm the result by installing it on PrestaShop. |
 
 ---
 
-## 🚀 Exemplary Production Module: `genisoft_cartthreshold`
+## 🚀 Example Module: `genisoft_cartthreshold`
 
-The repository includes a reference implementation of a complete, production-ready module in [`examples/genisoft_cartthreshold/`](examples/genisoft_cartthreshold/):
-- **PrestaShop Compatibility**: Tested on PrestaShop 8.0, 8.1, 8.2 and 1.7.8.
-- **Back-Office Configuration**: Built with `HelperForm` with automatic CSRF token protection and switch toggles.
-- **Database Schema**: Hardened `install.sql` and `uninstall.sql` using `_DB_PREFIX_` and `_MYSQL_ENGINE_`.
-- **Directory Security**: Standard `index.php` in every subdirectory preventing path disclosure.
-- **Smarty Templating**: 100% escaped variables and modern translation domain formatting.
+A small teaching module (free-shipping progress bar) in [`examples/genisoft_cartthreshold/`](examples/genisoft_cartthreshold/). It is an example, not a product: review and test it before using it on a live shop.
+
+- **What was tested (version 1.1.0)**, by installing it with `bin/console prestashop:module` and requesting real pages:
+  - PrestaShop **1.7.8.11** (PHP 7.4): upgrade from 1.0.0, uninstall, install; home, category, product and cart pages with an empty and a non-empty cart; language switch and currency switch (EUR → AED → EUR) with a non-empty cart.
+  - PrestaShop **9.2.0** (PHP 8.3): upgrade from 1.0.0, uninstall, install; home, category, product and cart pages with an empty and a non-empty cart (that test shop has a single language and currency).
+  - Not tested: PrestaShop 8.x, saving the back-office form, per-shop thresholds in multistore. `ps_versions_compliancy` therefore stops at 9.2.
+- **Back-Office Configuration**: `HelperForm`, posted to the back office's tokenized module URL.
+- **Prices**: formatted with `Context::getCurrentLocale()->formatPrice()` (`Tools::displayPrice()` no longer exists in PrestaShop 9); the threshold is converted to the visitor's currency before comparison.
+- **Directory Security**: `index.php` in every subdirectory to block directory listing.
+- **Smarty Templating**: escaped variables and domain-qualified translation strings.
+- **1.1.0 changes**: 1.0.0 crashed every front page on PrestaShop 9.2 (`Tools::displayPrice()`) and crashed PrestaShop 1.7.8 on a language or currency switch with a non-empty cart (cart total computed in `actionCartSave`, which `FrontController::init()` triggers before the cart is in the context). 1.1.0 fixes both and its upgrade script drops the write-only `genisoft_threshold_log` table that 1.0.0 filled from that hook. Both 1.0.0 bugs passed every static check of this harness, which is why the Limitations section below matters.
 
 ---
 
@@ -120,9 +128,22 @@ php tools/ps-sql-guard.php examples/genisoft_cartthreshold/
 # Run the Smarty Security Guard
 node tools/ps-smarty-guard.js examples/genisoft_cartthreshold/views/templates/
 
-# Run the Full 100-Point Audit
-bash tools/audit-harness.sh
+# Audit a whole module: guard self-test, 4 guards, php -l, packaging checks
+php tools/harness-auditor.php examples/genisoft_cartthreshold
+
+# Check that the guards still catch every project starter and pass every solution
+bash tests/fixtures.sh
 ```
+
+---
+
+## ⚠️ Limitations
+
+- The guards match **regular expressions** on the source text. There is no PHP parser and no data-flow analysis.
+- **False negatives**: a value concatenated straight from a call, such as `' WHERE ref = ' . Tools::getValue('ref')`, is not flagged. A clean run is not proof that a module is free of SQL injection or XSS.
+- **False positives**: a variable cast earlier (`$id = (int) $id;`) and concatenated later is still flagged; SQL keywords in comments can trigger `SQL_MISSING_DB_PREFIX` warnings.
+- The multi-shop check works per file: one `id_shop =` condition anywhere in the file satisfies every `_shop` join in it.
+- Passing the harness says nothing about runtime compatibility: install and test the module on each PrestaShop version it declares.
 
 ---
 

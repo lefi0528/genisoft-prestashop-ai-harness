@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Genisoft PrestaShop AI Harness"
   text: "Autonomous PrestaShop 8+ Module Engineering & AppSec Harness"
-  tagline: "Empowering AI coding agents (Claude Code, Cursor, Copilot, Antigravity) to write bulletproof, multi-store, and secure PrestaShop 8+ modules with zero hallucinations."
+  tagline: "Pattern-based checks that help AI coding agents (Claude Code, Cursor, Copilot, Antigravity) avoid the most common PrestaShop mistakes: hallucinated hooks, SQL injection, multi-store leaks and Smarty XSS."
   actions:
     - theme: brand
       text: Get Started with Lectures
@@ -18,17 +18,17 @@ hero:
 
 features:
   - title: 🛡️ Anti-Hallucination Hook Guard
-    details: Scans module code against the 669 official PrestaShop 8+ hook catalog. Eliminates WordPress action bleed and phantom hooks.
+    details: Checks registered hooks and hook methods against a 669-entry hook catalog. Flags WordPress functions and unknown hook names.
   - title: 🔒 Zero-Trust SQL AppSec
-    details: Static AST analysis enforcing pSQL() string sanitization, (int)/(float) ID casting, and mandatory _DB_PREFIX_ prefixing.
+    details: Regex-based checks that flag variables concatenated into SQL without pSQL() or an (int)/(float) cast, and table names without _DB_PREFIX_.
   - title: 🌐 Multi-Shop Isolation
-    details: Prevents silent cross-store catalog and customer data leakage by enforcing strict Shop::getContext() boundaries.
+    details: Flags product_shop / category_shop joins in files that never filter on id_shop, a common source of cross-store data leaks.
   - title: ⚡ Smarty 3/4 Security Guard
     details: Automated XSS detection and validation of modern PrestaShop 8+ translation domains across all .tpl templates.
   - title: 🎓 10 In-Depth Engineering Lectures
     details: From hybrid legacy/Symfony architecture to high-load caching and N+1 query elimination.
   - title: 🧪 4 Hands-on Projects
-    details: Real-world vulnerable starters and guarded solutions to train and certify autonomous AI coding agents.
+    details: Vulnerable starters and guarded solutions to train and evaluate AI coding agents. CI checks that the guards fail every starter and pass every solution.
 ---
 
 ## Why Harness Engineering for PrestaShop?
@@ -41,4 +41,4 @@ PrestaShop combines **legacy 1.7 architecture**, **Symfony 4.4/5.4/6.x DI contai
 3. Forget `id_shop` filtering on `_shop` tables, corrupting multi-store catalog isolation.
 4. Omit `|escape:'html':'UTF-8'` in Smarty templates, exposing stores to stored XSS attacks.
 
-The **Genisoft PrestaShop AI Harness** establishes an automated, deterministic verification gate between AI code generation and production deployment.
+The **Genisoft PrestaShop AI Harness** establishes an automated, deterministic first gate between AI code generation and human review. It catches common mistakes; it does not replace code review or testing on the PrestaShop versions a module targets.

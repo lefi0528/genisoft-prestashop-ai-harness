@@ -12,13 +12,12 @@ class HardenedRepository
 
     public function findCustomerOrders(int $idCustomer, string $search): array
     {
-        $idShop = (int) $this->context->shop->id;
-        $safeSearch = pSQL($search);
-
+        // Every value is cast or escaped where it is concatenated, so a reviewer (or the SQL guard)
+        // can check each one locally. addcslashes() keeps % and _ typed by the user literal in LIKE.
         $sql = 'SELECT * FROM `' . _DB_PREFIX_ . 'orders`
                 WHERE `id_customer` = ' . (int) $idCustomer . '
-                  AND `id_shop` = ' . $idShop . '
-                  AND `reference` LIKE '%' . $safeSearch . '%'';
+                  AND `id_shop` = ' . (int) $this->context->shop->id . '
+                  AND `reference` LIKE \'%' . addcslashes(pSQL($search), '%_') . '%\'';
 
         $results = Db::getInstance()->executeS($sql);
         return is_array($results) ? $results : [];
@@ -26,13 +25,11 @@ class HardenedRepository
 
     public function getCategoryProducts(int $idCategory): array
     {
-        $idShop = (int) $this->context->shop->id;
-
         $sql = 'SELECT ps.`id_product`, ps.`price`
                 FROM `' . _DB_PREFIX_ . 'product_shop` ps
                 INNER JOIN `' . _DB_PREFIX_ . 'category_shop` cs
-                    ON (ps.`id_category_default` = cs.`id_category` AND cs.`id_shop` = ' . $idShop . ')
-                WHERE ps.`id_shop` = ' . $idShop . '
+                    ON (ps.`id_category_default` = cs.`id_category` AND cs.`id_shop` = ' . (int) $this->context->shop->id . ')
+                WHERE ps.`id_shop` = ' . (int) $this->context->shop->id . '
                   AND cs.`id_category` = ' . (int) $idCategory;
 
         $results = Db::getInstance()->executeS($sql);

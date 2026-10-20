@@ -26,11 +26,21 @@ class PsHookGuard
 
     public function __construct(string $catalogPath)
     {
-        if (!file_exists($catalogPath)) {
+        if (!is_file($catalogPath)) {
             throw new \RuntimeException("Hook catalog not found: {$catalogPath}");
         }
         $raw = (string) file_get_contents($catalogPath);
-        $this->officialHooks = json_decode($raw, true) ?: [];
+        $catalog = json_decode($raw, true);
+        // An empty or unreadable catalog would flag every hook as hallucinated: refuse to run instead.
+        if (!is_array($catalog) || $catalog === [] || array_is_list($catalog)) {
+            throw new \RuntimeException("Hook catalog is empty or not a JSON object keyed by hook name: {$catalogPath}");
+        }
+        $this->officialHooks = $catalog;
+    }
+
+    public function getHookCount(): int
+    {
+        return count($this->officialHooks);
     }
 
     public function validateFile(string $filePath): array

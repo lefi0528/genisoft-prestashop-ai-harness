@@ -8,8 +8,9 @@ if (!defined('_PS_VERSION_')) {
 /**
  * Genisoft Cart Threshold & Free Gift Progression Module
  *
- * Implements strict PrestaShop 8+ architecture, AppSec parameters,
- * HelperForm with CSRF token, and multi-shop context isolation.
+ * Example module: shows a free-shipping progress bar on the front office,
+ * configured through a HelperForm (CSRF token handled by the back office).
+ * Installed and smoke-tested on PrestaShop 1.7.8.11 (PHP 7.4) and 9.2.0 (PHP 8.3).
  *
  * @author Genisoft - Lefi Abdelmonem <contact@genisoft.fr>
  * @license MIT
@@ -19,20 +20,24 @@ class Genisoft_Cartthreshold extends Module
     public const CONFIG_AMOUNT = 'GENISOFT_THRESHOLD_AMOUNT';
     public const CONFIG_ACTIVE = 'GENISOFT_THRESHOLD_ACTIVE';
 
+    /** Table created by 1.0.0 and dropped since 1.1.0 (see upgrade/upgrade-1.1.0.php). */
+    public const LEGACY_LOG_TABLE = 'genisoft_threshold_log';
+
     public function __construct()
     {
         $this->name = 'genisoft_cartthreshold';
         $this->tab = 'pricing_promotion';
-        $this->version = '1.0.0';
+        $this->version = '1.1.0';
         $this->author = 'Genisoft - Lefi Abdelmonem';
         $this->need_instance = 0;
         $this->bootstrap = true;
+        // Upper bound = highest version actually tested. Raise it only after testing a newer release.
+        $this->ps_versions_compliancy = ['min' => '1.7.8.0', 'max' => '9.2.99'];
 
         parent::__construct();
 
         $this->displayName = $this->l('Genisoft Cart Threshold Progression');
         $this->description = $this->l('Displays a dynamic progress bar for free shipping thresholds.');
-        $this->ps_versions_compliancy = ['min' => '1.7.8.0', 'max' => _PS_VERSION_];
     }
 
     public function install(): bool
@@ -43,8 +48,7 @@ class Genisoft_Cartthreshold extends Module
 
         $hooks = [
             'displayHeader',
-            'displayTop',
-            'actionCartSave'
+            'displayTop'
         ];
 
         foreach ($hooks as $hook) {
@@ -56,7 +60,7 @@ class Genisoft_Cartthreshold extends Module
         Configuration::updateValue(self::CONFIG_AMOUNT, 50.00);
         Configuration::updateValue(self::CONFIG_ACTIVE, 1);
 
-        return $this->executeSqlScript('install');
+        return true;
     }
 
     public function uninstall(): bool
@@ -64,7 +68,17 @@ class Genisoft_Cartthreshold extends Module
         Configuration::deleteByName(self::CONFIG_AMOUNT);
         Configuration::deleteByName(self::CONFIG_ACTIVE);
 
-        return $this->executeSqlScript('uninstall') && parent::uninstall();
+        return self::dropLegacyLogTable() && parent::uninstall();
+    }
+
+    /**
+     * Removes the write-only log table that 1.0.0 filled in actionCartSave.
+     * Nothing ever read it, and computing the cart total in that hook crashed
+     * PrestaShop 1.7.8 when a customer with a cart switched language or currency.
+     */
+    public static function dropLegacyLogTable(): bool
+    {
+        return Db::getInstance()->execute('DROP TABLE IF EXISTS `' . _DB_PREFIX_ . self::LEGACY_LOG_TABLE . '`');
     }
 
     public function getContent(): string
@@ -102,13 +116,16 @@ class Genisoft_Cartthreshold extends Module
 
     public function hookDisplayTop(): string
     {
-        if (!Configuration::get(self::CONFIG_ACTIVE) || !isset($this->context->cart)) {
+        if (!Configuration::get(self::CONFIG_ACTIVE) || !isset($this->context->cart, $this->context->currency)) {
             return '';
         }
 
-        $threshold = (float) Configuration::get(self::CONFIG_AMOUNT);
+        // The threshold is stored in the shop's default currency; the cart total is in the visitor's.
+        $threshold = (float) Tools::convertPrice((float) Configuration::get(self::CONFIG_AMOUNT), $this->context->currency);
         $cart = $this->context->cart;
-        $totalCart = (float) $cart->getOrderTotal(true, Cart::BOTH_WITHOUT_SHIPPING);
+        $totalCart = Validate::isLoadedObject($cart)
+            ? (float) $cart->getOrderTotal(true, Cart::BOTH_WITHOUT_SHIPPING)
+            : 0.0;
 
         $remaining = max(0.0, $threshold - $totalCart);
         $progress = $threshold > 0 ? min(100, (int) (($totalCart / $threshold) * 100)) : 100;
@@ -116,9 +133,9 @@ class Genisoft_Cartthreshold extends Module
         $this->context->smarty->assign([
             'genisoft_active' => true,
             'genisoft_threshold_amount' => number_format($threshold, 2),
-            'genisoft_threshold_formatted' => Tools::displayPrice($threshold),
+            'genisoft_threshold_formatted' => $this->formatPrice($threshold),
             'genisoft_remaining' => $remaining,
-            'genisoft_remaining_formatted' => Tools::displayPrice($remaining),
+            'genisoft_remaining_formatted' => $this->formatPrice($remaining),
             'genisoft_reached' => ($remaining <= 0.0),
             'genisoft_progress_percent' => $progress
         ]);
@@ -126,29 +143,13 @@ class Genisoft_Cartthreshold extends Module
         return $this->display(__FILE__, 'views/templates/hook/cart_threshold_bar.tpl');
     }
 
-    public function hookActionCartSave(array $params): void
+    /**
+     * Tools::displayPrice() was removed in PrestaShop 9; the CLDR locale API
+     * exists in 1.7.6 through 9.x and formats in the visitor's currency and language.
+     */
+    private function formatPrice(float $amount): string
     {
-        if (!isset($params['cart']) || !Validate::isLoadedObject($params['cart'])) {
-            return;
-        }
-
-        $cart = $params['cart'];
-        $idShop = (int) $this->context->shop->id;
-        $idCustomer = (int) $cart->id_customer;
-        $cartTotal = (float) $cart->getOrderTotal(true, Cart::BOTH_WITHOUT_SHIPPING);
-        $threshold = (float) Configuration::get(self::CONFIG_AMOUNT);
-        $reached = ($cartTotal >= $threshold) ? 1 : 0;
-
-        // Uses UPSERT to prevent infinite table growth on repeated cart micro-updates
-        Db::getInstance()->execute('
-            INSERT INTO `' . _DB_PREFIX_ . 'genisoft_threshold_log`
-            (`id_cart`, `id_customer`, `id_shop`, `cart_total`, `threshold_reached`, `date_add`)
-            VALUES (' . (int) $cart->id . ', ' . $idCustomer . ', ' . $idShop . ', ' . $cartTotal . ', ' . $reached . ', NOW())
-            ON DUPLICATE KEY UPDATE
-                `cart_total` = VALUES(`cart_total`),
-                `threshold_reached` = VALUES(`threshold_reached`),
-                `date_add` = NOW()
-        ');
+        return $this->context->getCurrentLocale()->formatPrice($amount, $this->context->currency->iso_code);
     }
 
     private function renderForm(): string
@@ -203,33 +204,5 @@ class Genisoft_Cartthreshold extends Module
         ];
 
         return $helper->generateForm([$fieldsForm]);
-    }
-
-    private function executeSqlScript(string $type): bool
-    {
-        $path = dirname(__FILE__) . '/sql/' . $type . '.sql';
-        if (!file_exists($path)) {
-            return false;
-        }
-
-        $sql = (string) file_get_contents($path);
-        $sql = str_replace(['_DB_PREFIX_', '_MYSQL_ENGINE_'], [_DB_PREFIX_, _MYSQL_ENGINE_], $sql);
-
-        // Split multi-query SQL files safely
-        $queries = preg_split('/;\s*[\r\n]+/', trim($sql));
-        if ($queries === false) {
-            return false;
-        }
-
-        foreach ($queries as $query) {
-            $query = trim($query);
-            if (!empty($query)) {
-                if (!Db::getInstance()->execute($query)) {
-                    return false;
-                }
-            }
-        }
-
-        return true;
     }
 }

@@ -1,6 +1,6 @@
 # Hands-On PrestaShop Engineering Projects
 
-Test and certify autonomous AI coding agents on real-world PrestaShop scenarios.
+Train and evaluate AI coding agents on real-world PrestaShop scenarios.
 
 ## Projects
 
@@ -10,5 +10,5 @@ Test and certify autonomous AI coding agents on real-world PrestaShop scenarios.
    - Harden a vulnerable database query repository susceptible to SQL injection and multi-store data corruption.
 3. [Project 03: Smarty XSS & Translation Repair](./project-03-smarty-xss-and-translation-repair)
    - Fix unescaped variable outputs and modernize translation domains for PrestaShop 8+.
-4. [Project 04: Full Module Certification](./project-04-full-module-certification)
-   - Audit an end-to-end module from scratch, ensuring compliance across all 4 verification gates and achieving a 100/100 harness audit score.
+4. [Project 04: Full Module Audit](./project-04-full-module-certification)
+   - Audit a complete module with the 4 verification gates and the module auditor, then confirm the result with an installation test.

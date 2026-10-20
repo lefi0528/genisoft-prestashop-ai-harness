@@ -22,7 +22,7 @@
         }
     },
     "scripts": {
-        "test": "@php tools/harness-auditor.php",
+        "test": "@php tools/harness-auditor.php examples/genisoft_cartthreshold",
         "harness:audit": "@php tools/harness-auditor.php"
     },
     "config": {

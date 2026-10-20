@@ -29,7 +29,7 @@ export default defineConfig({
             { text: '05: Multi-Shop & Multi-Lang Isolation', link: '/lectures/lecture-05-multishop-and-multilang-context-isolation' },
             { text: '06: Smarty Security & Escaping', link: '/lectures/lecture-06-smarty-security-escaping-and-compilation' },
             { text: '07: HelperForm vs Symfony Form Types', link: '/lectures/lecture-07-helperform-vs-symfony-forms-in-prestashop-8' },
-            { text: '08: Verification Gates & AST Linting', link: '/lectures/lecture-08-verification-gates-and-ast-linting' },
+            { text: '08: Verification Gates & Static Checks', link: '/lectures/lecture-08-verification-gates-and-ast-linting' },
             { text: '09: Performance & N+1 Query Elimination', link: '/lectures/lecture-09-performance-n-plus-one-queries-and-cache' },
             { text: '10: Autonomous Agent Prompt Protocol', link: '/lectures/lecture-10-autonomous-agent-prompt-harness-protocol' }
           ]
@@ -43,7 +43,7 @@ export default defineConfig({
             { text: 'Project 01: Hook Hallucination Repair', link: '/projects/project-01-hook-hallucination-repair' },
             { text: 'Project 02: SQL Injection & Multi-Shop Leak', link: '/projects/project-02-sql-injection-and-multishop-leak' },
             { text: 'Project 03: Smarty XSS & Translation Repair', link: '/projects/project-03-smarty-xss-and-translation-repair' },
-            { text: 'Project 04: Full Module Certification', link: '/projects/project-04-full-module-certification' }
+            { text: 'Project 04: Full Module Audit', link: '/projects/project-04-full-module-certification' }
           ]
         }
       ]

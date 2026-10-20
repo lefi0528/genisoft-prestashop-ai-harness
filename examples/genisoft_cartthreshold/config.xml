@@ -2,8 +2,8 @@
 <module>
     <name>genisoft_cartthreshold</name>
     <displayName><![CDATA[Genisoft Cart Threshold & Free Gift Bar]]></displayName>
-    <version><![CDATA[1.0.0]]></version>
-    <description><![CDATA[Autonomous PrestaShop 8+ Harness Verified Module for Dynamic Cart Threshold Progression.]]></description>
+    <version><![CDATA[1.1.0]]></version>
+    <description><![CDATA[Example module: free-shipping threshold progress bar (PrestaShop 1.7.8 to 9.2).]]></description>
     <author><![CDATA[Genisoft - Lefi Abdelmonem]]></author>
     <tab><![CDATA[pricing_promotion]]></tab>
     <is_configurable>1</is_configurable>

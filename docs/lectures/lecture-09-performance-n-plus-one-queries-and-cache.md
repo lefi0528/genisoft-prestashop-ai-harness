@@ -15,6 +15,8 @@ public function hookActionCartSave($params)
 }
 ```
 
+> **Keep `actionCartSave` light.** PrestaShop 1.7.8 calls `$cart->update()` in `FrontController::init()` before the cart is put in the context, for example when a customer with a non-empty cart switches language or currency. Calling `$cart->getOrderTotal()` from this hook at that moment ends in a fatal error. Compute totals in display hooks or controllers instead.
+
 ### High-Performance Batch Pattern
 ```php
 // HIGH PERFORMANCE: Single batch query with WHERE IN

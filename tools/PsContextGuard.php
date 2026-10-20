@@ -32,7 +32,7 @@ class PsContextGuard
         // 2. Check for missing shop restriction when joining product or category _shop tables
         // Supports both concatenated `' . _DB_PREFIX_ . 'product_shop` and literal `_DB_PREFIX_product_shop`
         $hasShopJoin = (bool) preg_match('/JOIN\s+[^;\n]*?(product|category)_shop\b/i', $code);
-        if ($hasShopJoin && !preg_match('/id_shop\s*=\s*/i', $code)) {
+        if ($hasShopJoin && !preg_match('/id_shop`?\s*=\s*/i', $code)) {
             $issues[] = [
                 'severity' => 'ERROR',
                 'category' => 'MULTISHOP_MISSING_FILTER',

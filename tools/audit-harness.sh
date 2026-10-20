@@ -1,23 +1,16 @@
 #!/usr/bin/env bash
 # ==========================================================
-# Genisoft PrestaShop 8+ Harness: 100-Point Audit Runner
+# Genisoft PrestaShop Harness: module audit runner
+# Usage: bash tools/audit-harness.sh <module-dir>
+# Exit codes: 0 no blocking finding, 1 finding(s), 2 tool error.
 # ==========================================================
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_DIR="$(dirname "$SCRIPT_DIR")"
 
-echo "=========================================================="
-echo "  GENISOFT PRESTASHOP 8+ HARNESS: 100-POINT AUDIT RUNNER"
-echo "=========================================================="
-
-cd "$REPO_DIR"
-
-if [ ! -f "vendor/autoload.php" ]; then
-    if command -v composer >/dev/null 2>&1; then
-        echo "Generating Composer PSR-4 autoloader..."
-        composer dump-autoload --optimize --no-interaction >/dev/null 2>&1 || true
-    fi
+if [ "$#" -ne 1 ]; then
+    echo "Usage: bash tools/audit-harness.sh <module-dir>" >&2
+    exit 2
 fi
 
-php "$SCRIPT_DIR/harness-auditor.php"
+exec php "$SCRIPT_DIR/harness-auditor.php" "$1"

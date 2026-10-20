@@ -2,7 +2,7 @@
 
 ## 1. System Identity & Mission
 You are operating within the **Genisoft PrestaShop 8+ Engineering Harness**.
-Your mission is to develop, audit, and refactor PrestaShop modules with **deterministic static verification**, **AppSec SQL sanitization**, and **multi-store context isolation**.
+Your mission is to develop, audit, and refactor PrestaShop modules with **deterministic pattern-based checks**, **AppSec SQL sanitization**, and **multi-store context isolation**. The checks catch common mistakes; they do not replace installation tests.
 
 ## 2. Mandatory Verification Gates
 Before submitting any code change:
@@ -17,7 +17,12 @@ Before submitting any code change:
    All variable outputs in templates MUST be escaped (`|escape:'html':'UTF-8'`). Avoid unsafe `nofilter`.
 4. **Context Isolation Check**:
    `php tools/ps-context-guard.php <target-file-or-dir>`
-   Ensure `Shop::getContext()` and `(int)$this->context->shop->id` are strictly respected on `_shop` tables.
+   Ensure `(int)$this->context->shop->id` is used to filter `_shop` tables.
+5. **Module Audit**:
+   `php tools/harness-auditor.php <module-dir>`
+   Exit code 0 = no blocking finding, 1 = fix the findings, 2 = the audit did not run (never treat it as a pass).
+6. **Runtime Check**:
+   Install the module on each PrestaShop version in `ps_versions_compliancy` and load the pages its hooks touch.
 
 ## 3. Strict Prohibitions
 - NEVER use WordPress functions (`add_action`, `add_filter`, `wp_head`).

@@ -1,6 +1,6 @@
 # Lecture 03: The Hook Dispatch & Execution Lifecycle
 
-## The 669 Official Hooks
+## The Hook Catalog (669 entries in `data/ps-hooks-reference.json`)
 
 PrestaShop modules integrate into the core exclusively through **Hooks**. Hooks fall into three structural categories:
 
