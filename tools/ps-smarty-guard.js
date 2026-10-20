@@ -146,7 +146,7 @@ if (require.main === module) {
     console.error(`Error: ${error.message}`);
     process.exit(EXIT_TOOL_ERROR);
   }
-  files.sort();
+  files.sort((a, b) => a.localeCompare(b));
 
   if (files.length === 0) {
     console.error(`Error: no .tpl file found under '${target}'. Nothing was scanned.`);

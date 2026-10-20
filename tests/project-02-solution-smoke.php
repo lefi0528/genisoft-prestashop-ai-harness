@@ -46,7 +46,7 @@ class Db
     }
 }
 
-require dirname(__DIR__) . '/projects/project-02-sql-injection-and-multishop-leak/solution/hardened-query-module.php';
+require_once dirname(__DIR__) . '/projects/project-02-sql-injection-and-multishop-leak/solution/hardened-query-module.php';
 
 $repository = new HardenedRepository();
 $repository->findCustomerOrders(42, "x' OR '1'='1 50%_off");

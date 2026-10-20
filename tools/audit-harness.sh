@@ -8,7 +8,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if [ "$#" -ne 1 ]; then
+if [[ "$#" -ne 1 ]]; then
     echo "Usage: bash tools/audit-harness.sh <module-dir>" >&2
     exit 2
 fi

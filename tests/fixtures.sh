@@ -18,7 +18,7 @@ expect() {
     shift
     "$@" >"$out" 2>&1
     local code=$?
-    if [ "$code" -eq "$expected" ]; then
+    if [[ "$code" -eq "$expected" ]]; then
         echo "ok   (exit $code) $*"
     else
         echo "FAIL (exit $code, expected $expected) $*"
@@ -34,7 +34,7 @@ expect_findings() {
     "$@" >"$out" 2>&1
     local code=$? found
     found=$(grep -c -F -- "$text" "$out")
-    if [ "$code" -eq 1 ] && [ "$found" -eq "$count" ]; then
+    if [[ "$code" -eq 1 && "$found" -eq "$count" ]]; then
         echo "ok   (exit 1, $found x '$text') $*"
     else
         echo "FAIL (exit $code, $found x '$text'; expected exit 1, $count) $*"
@@ -74,7 +74,7 @@ expect 2 php tools/ps-hook-guard.php "$P3/starter"
 expect 2 node tools/ps-smarty-guard.js tools
 expect 2 php tools/harness-auditor.php does-not-exist
 
-if [ "$failures" -gt 0 ]; then
+if [[ "$failures" -gt 0 ]]; then
     echo "$failures fixture check(s) failed."
     exit 1
 fi
